@@ -332,8 +332,8 @@ content:
 # 碎碎念动态归档 - 默认关闭；启用时还需配置 KOHARU_SUITE_URL 和 dynamic Docker target
 # =============================================================================
 moments:
-  enabled: false
-  path: moments # 支持嵌套路径，例如 life/moments；不要添加首尾斜线
+  enabled: true # Phase C 部署 koharu-suite 前碎碎念页面会 503，其余页面不受影响
+  path: moments
   title: 碎碎念
   description: 记录频道中的日常消息
   # ogImage: /img/moments-og.png
