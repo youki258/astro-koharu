@@ -49,3 +49,6 @@ GRILL-ME.md
 
 archify/
 
+
+# one-off migration script (remove after Phase A)
+migrate-fuwari.mjs

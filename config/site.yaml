@@ -12,23 +12,23 @@
 # =============================================================================
 site:
   title: youkiの博客 # 网站名称
-  alternate: youkiのblog # 网站英文名称 用于页脚、Logo、@ handle 等
-  subtitle: WA 的一声就哭了 # 网站副标题
+  alternate: youki # 网站英文名称 用于页脚、Logo、@ handle 等
+  subtitle: 记录技术与生活 # 网站副标题
   name: youki # 作者名称 - 请修改为你的名字
-  description: 一个基于 Astro 的现代化博客主题 # 网站描述
+  description: youki 的技术博客：网络、Java、前端与计算机基础笔记 # 网站描述
   avatar: /img/avatar.webp # 网站头像
   showLogo: true # 是否显示 Logo
-  author: Author # 作者名称 - 请修改为你的名字
-  url: https://koharu.cosine.ren # 站点 URL 用于 RSS 和 SEO
+  author: youki # 作者名称 - 请修改为你的名字
+  url: https://youki.fun # 站点 URL 用于 RSS 和 SEO
   defaultOgImage: /img/avatar.webp # 默认 Open Graph 图片
-  startYear: 2024 # 建站年份
+  startYear: 2025 # 建站年份
   timezone: Asia/Shanghai # 时区配置 (IANA 格式)，用于日期显示和处理
   keywords: # SEO 关键词 (全局)
     - 博客
-    - Astro
     - 技术
+    - 网络
+    - Java
     - 前端
-    # 请根据你的网站内容添加关键词
   # breadcrumbHome: 首页  # 面包屑导航中首页的显示名称（默认: '首页'）
   # icp:                         # ICP 备案号（可自定义链接）
   #   text: "粤ICP备xxxxxxxxxx号"
@@ -53,9 +53,10 @@ i18n:
       label: 中文
     - code: en
       label: English
-      # enabled: false  # 内容存在但暂时禁用（保留内容但不生成路由）
+      enabled: false # 内容存在但暂时禁用（保留内容但不生成路由）
     - code: ja
       label: 日本語
+      enabled: false # 内容存在但暂时禁用（保留内容但不生成路由）
     - code: ko
       label: 한국어
 
@@ -72,11 +73,12 @@ categoryMap:
   周刊: weekly
   # Secondary categories (for nested paths)
   前端: front-end
-  # Add more as needed:
-  # 书摘: reading
-  # 后端: back-end
-  # 算法: algorithm
-  # 项目: project
+  # Migrated from fuwari
+  网络与架构: network
+  网络安全: security
+  Java 全栈: java
+  计算机基础: cs
+  AI: ai
 
 # =============================================================================
 # Featured Categories (Homepage)
@@ -89,22 +91,22 @@ categoryMap:
 #   description: 分类描述文字，显示在卡片上
 # -----------------------------------------------------------------------------
 featuredCategories:
-  - link: life # 对应 categoryMap 中 随笔: life
-    label: 随笔
+  - link: note/network
+    label: 网络与架构
+    image: /img/cover/7.webp
+    description: 网络协议
+  - link: note/java
+    label: Java 全栈
     image: /img/cover/2.webp
-    description: 生活记录、随想随笔
-  - link: note # 对应 categoryMap 中 笔记: note
-    label: 笔记
-    image: /img/cover/4.webp
-    description: 技术笔记、学习笔记
-  - link: note/front-end # 嵌套分类：笔记/前端
+    description: 后端开发
+  - link: note/front-end
     label: 前端
     image: /img/cover/1.webp
-    description: 前端技术相关
-  - link: tools # 对应 categoryMap 中 工具: tools
-    label: 工具
-    image: /img/cover/11.webp
-    description: 工具使用、效率提升
+    description: Web 前端
+  - link: note/cs
+    label: 计算机基础
+    image: /img/cover/4.webp
+    description: CS 基础
 
 # =============================================================================
 # Featured Series
@@ -129,17 +131,10 @@ featuredSeries:
     label: 我的周刊 # 简短名称
     fullName: 我的技术周刊 # 完整名称
     description: | # 支持多行 Markdown
-      这是周刊/系列文章功能的示例配置。
-      你可以用它来发布定期更新的系列内容，如技术周刊、读书笔记系列等。
-      设置 enabled: false 可以关闭此功能。
+      定期更新的系列内容。
     cover: /img/weekly_header.webp # 系列页面头图
-    enabled: true # 启用此系列
+    enabled: false # 启用此系列
     icon: ri:newspaper-line # 导航图标
-    links: # 相关链接（可选）
-      github: https://github.com/your-username/your-repo # (可选) GitHub 仓库
-      rss: /rss.xml # (可选) RSS 订阅链接
-      # chrome: https://chromewebstore.google.com/detail/your-extension-id # (可选) 浏览器插件
-      # docs: https://your-docs-url # (可选) 文档链接
   # 示例：添加第二个系列（取消注释启用）
   # - slug: reading # URL 路径: /reading
   #   categoryName: 书摘
@@ -164,13 +159,13 @@ featuredSeries:
 # -----------------------------------------------------------------------------
 social:
   github:
-    url: https://github.com/your-username # 替换为你的 GitHub 链接
+    url: https://github.com/youki258 # 替换为你的 GitHub 链接
     icon: ri:github-fill # Remix Icon 的 GitHub 图标
     color: '#191717' # (可选) 图标颜色
-  email:
-    url: mailto:your@email.com # 替换为你的邮箱，需加 mailto: 前缀
-    icon: ri:mail-line
-    color: '#55acd5'
+  bilibili:
+    url: https://space.bilibili.com/your-id # TODO: 替换为你的 B 站主页
+    icon: ri:bilibili-fill
+    color: '#da708a'
   rss:
     url: /rss.xml # 站内 RSS 订阅地址
     icon: ri:rss-line
@@ -226,31 +221,7 @@ friends:
         desc: 站点简介 # 站点简介
         image: https://your-blog.com/avatar.jpg # 头像链接
         color: "#ffc0cb" # 主题色（可选）
-  data: # 友链列表
-    - site: 余弦の博客
-      url: https://blog.cosine.ren
-      owner: cos
-      desc: FE / ACG / 手工 / 深色模式强迫症 / INFP / 兴趣广泛养两只猫的老宅女 / remote
-      image: https://blog.cosine.ren/img/avatar.webp
-      color: '#ed788b'
-    - site: 示例博客 A
-      url: https://example-a.com
-      owner: Alice
-      desc: 一个热爱技术的开发者
-      image: https://api.dicebear.com/7.x/avataaars/svg?seed=Alice
-      color: '#BEDCFF'
-    - site: 示例博客 B
-      url: https://example-b.com
-      owner: Bob
-      desc: 分享生活与技术的小站
-      image: https://api.dicebear.com/7.x/avataaars/svg?seed=Bob
-      color: '#FBC1CC'
-    - site: 示例博客 C
-      url: https://example-c.com
-      owner: Carol
-      desc: 记录学习与成长的地方
-      image: https://api.dicebear.com/7.x/avataaars/svg?seed=Carol
-      color: '#ABDCFF'
+  data: [] # 友链列表，交换友链后在这里添加
 
 # =============================================================================
 # Announcements
@@ -399,10 +370,10 @@ navigation:
     icon: ri:home-heart-fill # 图标
   # - name: 书摘
   #   path: /reading
-  - name: 周刊
-    nameKey: nav.weekly
-    path: /weekly
-    icon: ri:newspaper-line
+  # - name: 周刊
+  #   nameKey: nav.weekly
+  #   path: /weekly
+  #   icon: ri:newspaper-line
   # Optional explicit Moments position. When omitted, enabled Moments is inserted after Archives.
   # - feature: moments
   #   icon: ri:chat-smile-3-fill
@@ -519,7 +490,16 @@ navigation:
     # path: # 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
     # lang: # 语言 (默认: 'zh-CN')
 comment:
-  provider: none  # 'remark42' | 'giscus' | 'waline' | 'twikoo' | 'none'
+  provider: giscus # 'remark42' | 'giscus' | 'waline' | 'twikoo' | 'none'
+  giscus:
+    repo: youki258/astro-koharu
+    repoId: R_kgDOUSD6gw
+    category: Announcements
+    categoryId: DIC_kwDOUSD6g84DFI9w
+    mapping: pathname
+    reactionsEnabled: '1'
+    inputPosition: top
+    lang: zh-CN
   # remark42:
   #   host: https://comment.example.com/
   #   siteId: your-site-id
@@ -590,9 +570,9 @@ comment:
 # -----------------------------------------------------------------------------
 analytics:
   umami:
-    enabled: true
+    enabled: false # 部署 umami 后改为 true 并填入 id
     id: your-umami-id
-    endpoint: https://stats.example.com
+    endpoint: https://stats.youki.fun
     # statistics_display:
     #   token: your-umami-share-token
     #   article_page_views: true
@@ -622,15 +602,15 @@ seo:
 # Christmas/Seasonal Features
 # =============================================================================
 bgm:
-  enabled: true  # (有 audio 时自动启用，显式 false 可禁用)
+  enabled: true # (有 audio 时自动启用，显式 false 可禁用)
   # metingApi: https://163.hyc.moe/  # Meting API 地址，默认为 https://163.hyc.moe/，推荐自部署
   audio:
-    - title: 最爱山山
+    - title: 我的歌单
       list:
-        - https://music.163.com/playlist?id=8676645748
-    - title: Love Vocaloid
+        - https://music.163.com/playlist?id=18169470140
+    - title: 收藏专辑
       list:
-        - https://music.163.com/playlist?id=8882890045
+        - https://music.163.com/album?id=241083511
 
 christmas:
   enabled: false # 总开关
@@ -659,7 +639,7 @@ christmas:
 #   icon: 导航图标，Iconify 格式（可选，默认：ri:bilibili-fill）
 # -----------------------------------------------------------------------------
 bangumi:
-  userId: cosine
+  userId: 989912
   # label: 追番
   # icon: ri:bilibili-fill
 
@@ -678,7 +658,7 @@ bangumi:
 #     - urlTemplate: URL 模板，支持占位符 {path}（文件绝对路径）
 # -----------------------------------------------------------------------------
 dev:
-  localProjectPath: '/Users/yourname/path/to/astro-koharu' # 请修改为你的项目绝对路径
+  localProjectPath: 'D:/studio/blog/astro-koharu' # 请修改为你的项目绝对路径
   contentRelativePath: 'src/content/blog'
   editors:
     - id: vscode

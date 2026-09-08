@@ -3,32 +3,23 @@ layout: ../layouts/PageLayout.astro
 title: "About"
 coverTitle: "关于我"
 date: 2025-01-03 01:01:33
-description: "关于我？"
+description: "关于 youki"
 ---
 
-## 你好，这里是余弦
+## 你好，这里是 youki
 
-[![github badge](https://img.shields.io/badge/dynamic/json?color=blue&label=Github&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dgithub%26queryKey%3Dyusixian)](https://github.com/yusixian)
+一个写代码的人，这里记录我的技术笔记和生活随笔。
 
-cosine = 余弦 = cos
+## 这个博客里有什么
 
-愿热情永存，愿热爱不灭，愿生活无憾
+- **网络与架构** —— 计算机网络、协议与架构相关笔记
+- **Java 全栈** —— Spring Boot、MySQL、中间件的学习笔记
+- **前端** —— JavaScript / Vue / 工程化
+- **计算机基础** —— 数据结构、操作系统、机器学习等
+- **随笔** —— 比赛总结和杂七杂八的想法
 
-> 我们 都只是无名之辈 \
-> 做你自己最喜欢的事 \
-> 像花一样 肆意绽放 \
-> 不去管 有没有人欣赏
+## 联系我
 
-### 找到我
+- GitHub: [youki258](https://github.com/youki258)
 
-个人 Telegram 前端频道：日常碎碎念，偶尔掉落优质前端博文推荐、学习资源等
-
-https://t.me/cosine_front_end
-
-Gitbook 前端学习记录
-
-https://book.cosine.ren/
-
-[![GitHub State](https://git-stats.cosine.ren/api?username=yusixian&theme=dark&show_icons=true&hide_border=true)](https://github.com/anuraghazra/github-readme-stats)
-
-[![GitHub Streak](https://github-readme-streak-stats-rust-tau.vercel.app?user=yusixian&theme=dark&date_format=%5BY%20%5DM%20&hide_border=true)](https://git.io/streak-stats)
+> TODO: 这里是我代拟的草稿，随时替换成你自己的介绍。
