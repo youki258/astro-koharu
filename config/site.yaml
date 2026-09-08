@@ -570,8 +570,8 @@ comment:
 # -----------------------------------------------------------------------------
 analytics:
   umami:
-    enabled: false # 部署 umami 后改为 true 并填入 id
-    id: your-umami-id
+    enabled: true
+    id: e7c0102c-e210-4dee-b22b-37161b87e28e
     endpoint: https://stats.youki.fun
     # statistics_display:
     #   token: your-umami-share-token
