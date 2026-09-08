@@ -11,10 +11,10 @@
 # Site Basic Information
 # =============================================================================
 site:
-  title: 余弦の博客 # 网站名称
-  alternate: cosine # 网站英文名称 用于页脚、Logo、@ handle 等
+  title: youkiの博客 # 网站名称
+  alternate: youkiのblog # 网站英文名称 用于页脚、Logo、@ handle 等
   subtitle: WA 的一声就哭了 # 网站副标题
-  name: cos # 作者名称 - 请修改为你的名字
+  name: youki # 作者名称 - 请修改为你的名字
   description: 一个基于 Astro 的现代化博客主题 # 网站描述
   avatar: /img/avatar.webp # 网站头像
   showLogo: true # 是否显示 Logo

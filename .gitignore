@@ -29,6 +29,7 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 .vscode/
+.zcode/
 
 # Transformers.js model cache
 .cache/*
@@ -37,3 +38,14 @@ pnpm-debug.log*
 
 # Backup files
 backups/
+
+# Agent session artifacts
+.pi/
+.zcode/
+GRILL-ME.md
+
+
+
+
+archify/
+
