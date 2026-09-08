@@ -1,0 +1,24 @@
+# Normalize line endings: LF in repo and working tree on all platforms
+* text=auto eol=lf
+
+# Windows script files that genuinely need CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary assets (never convert)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.mp3 binary
+*.mp4 binary
+*.webm binary
+*.tar.gz binary
