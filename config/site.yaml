@@ -490,16 +490,20 @@ navigation:
     # path: # 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
     # lang: # 语言 (默认: 'zh-CN')
 comment:
-  provider: giscus # 'remark42' | 'giscus' | 'waline' | 'twikoo' | 'none'
-  giscus:
-    repo: youki258/astro-koharu
-    repoId: R_kgDOUSD6gw
-    category: Announcements
-    categoryId: DIC_kwDOUSD6g84DFI9w
-    mapping: pathname
-    reactionsEnabled: '1'
-    inputPosition: top
+  provider: waline # 'remark42' | 'giscus' | 'waline' | 'twikoo' | 'none'
+  waline:
+    serverURL: https://comments.youki.fun
     lang: zh-CN
+    dark: html.dark
+  # giscus: # 备用方案，改回 provider: giscus 即可启用（App 已安装）
+  #   repo: youki258/astro-koharu
+  #   repoId: R_kgDOUSD6gw
+  #   category: Announcements
+  #   categoryId: DIC_kwDOUSD6g84DFI9w
+  #   mapping: pathname
+  #   reactionsEnabled: '1'
+  #   inputPosition: top
+  #   lang: zh-CN
   # remark42:
   #   host: https://comment.example.com/
   #   siteId: your-site-id
