@@ -12,7 +12,7 @@
 # =============================================================================
 site:
   title: youkiの博客 # 网站名称
-  alternate: "youkiの博客" # 品牌词：横幅大字+页脚handle
+  alternate: "" # 置空：避免横幅与 title 重复；页脚 handle 随之隐藏
   subtitle: 记录技术与生活 # 网站副标题
   name: youki # 作者名称 - 请修改为你的名字
   description: youki 的技术博客：网络、Java、前端与计算机基础笔记 # 网站描述
