@@ -12,12 +12,12 @@
 # =============================================================================
 site:
   title: youkiの博客 # 网站名称
-  alternate: "" # 置空：页头只显示站点标题，去掉独立品牌词
+  alternate: "youkiの博客" # 品牌词：横幅大字+页脚handle
   subtitle: 记录技术与生活 # 网站副标题
   name: youki # 作者名称 - 请修改为你的名字
   description: youki 的技术博客：网络、Java、前端与计算机基础笔记 # 网站描述
   avatar: /img/avatar.webp # 网站头像
-  showLogo: false # 页头显示文字站点标题而非 SVG logo
+  showLogo: true # 页头显示字标 SVG
   author: youki # 作者名称 - 请修改为你的名字
   url: https://blog.youki.fun # 站点 URL 用于 RSS 和 SEO
   defaultOgImage: /img/avatar.webp # 默认 Open Graph 图片
