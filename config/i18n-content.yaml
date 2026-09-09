@@ -13,81 +13,26 @@
 
 en:
   categories:
-    life: Life
     note: Notes
-    tools: Tools
-    weekly: Weekly
+    network: Network
+    security: Security
+    java: Java
+    cs: CS
     front-end: Frontend
-
-  series:
-    weekly:
-      label: My Weekly
-      fullName: My Tech Weekly
+    ai: AI
+    tools: Tools
+    life: Life
 
   featuredCategories:
-    life:
-      label: Life
-      description: Life journals and essays
-    note:
-      label: Notes
-      description: Technical and study notes
+    note/network:
+      label: Network
+      description: Network protocols and architecture
+    note/java:
+      label: Java
+      description: Backend development
     note/front-end:
       label: Frontend
-      description: Frontend technologies
-    tools:
-      label: Tools
-      description: Tool usage and productivity
-
-ja:
-  categories:
-    life: 日常
-    note: ノート
-    tools: ツール
-    weekly: 週刊
-    front-end: フロントエンド
-
-  series:
-    weekly:
-      label: 週間ダイジェスト
-      fullName: テック週間ダイジェスト
-
-  featuredCategories:
-    life:
-      label: 日常
-      description: 日常の記録とエッセイ
-    note:
-      label: ノート
-      description: 技術と学習のノート
-    note/front-end:
-      label: フロントエンド
-      description: フロントエンド技術
-    tools:
-      label: ツール
-      description: ツールの使い方と生産性
-
-ko:
-  categories:
-    life: 에세이
-    note: 노트
-    tools: 도구
-    weekly: 주간지
-    front-end: 프론트엔드
-
-  series:
-    weekly:
-      label: 나의 주간지
-      fullName: 나의 기술 주간지
-
-  featuredCategories:
-    life:
-      label: 에세이
-      description: 일상 기록, 이런저런 생각들
-    note:
-      label: 노트
-      description: 기술 노트, 학습 노트
-    note/front-end:
-      label: 프론트엔드
-      description: 프론트엔드 기술 관련
-    tools:
-      label: 도구
-      description: 도구 사용법, 효율성 향상
+      description: Web frontend
+    note/cs:
+      label: CS
+      description: Computer science basics
