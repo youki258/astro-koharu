@@ -117,3 +117,23 @@ test('keeps an album separate when it touches an unknown cursor boundary', () =>
   assert.equal(groupMomentMessages(messages, { separateFirst: true }).length, 3);
   assert.equal(groupMomentMessages(messages, { separateLast: true }).length, 3);
 });
+
+test('merges a Desktop album when the API shuffles same-timestamp members', () => {
+  const at = '2026-09-07T16:10:51.000Z';
+  const caption = message(715, { text: '#碎碎念 带图的日常', publishedAt: at });
+  const shuffled = [
+    caption,
+    message(718, { publishedAt: at }),
+    message(716, { publishedAt: at }),
+    message(717, { publishedAt: at }),
+  ];
+
+  const groups = groupMomentMessages(shuffled);
+  assert.equal(groups.length, 1);
+  assert.equal(groups[0].anchor.id, caption.id);
+  assert.equal(groups[0].primary.id, caption.id);
+  assert.deepEqual(
+    groups[0].messages.map((item) => Number(new URL(item.sourceUrl).pathname.split('/')[2])),
+    [715, 716, 717, 718],
+  );
+});

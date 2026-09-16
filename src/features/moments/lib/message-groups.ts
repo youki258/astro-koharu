@@ -109,6 +109,24 @@ function separateBoundaryGroups(groups: readonly PublicMessage[][], options: Gro
 }
 
 /**
+ * The suite orders same-timestamp messages by their opaque suite UUID, so Desktop-imported album members can
+ * arrive shuffled; stable sorting restores source-posting adjacency for the conservative album fallback while
+ * keeping the page's newest-first order.
+ */
+function toGroupingOrder(messages: readonly PublicMessage[]): PublicMessage[] {
+  return [...messages].sort((a, b) => {
+    if (a.publishedAt !== b.publishedAt) return a.publishedAt < b.publishedAt ? 1 : -1;
+    if (a.channel.id !== b.channel.id) return a.channel.id < b.channel.id ? -1 : 1;
+    const sourceA = telegramSourceMessage(a);
+    const sourceB = telegramSourceMessage(b);
+    if (sourceA && sourceB && sourceA.channel === sourceB.channel && sourceA.id !== sourceB.id) {
+      return sourceA.id < sourceB.id ? -1 : 1;
+    }
+    return 0;
+  });
+}
+
+/**
  * Groups contiguous Telegram album members without changing their stable Suite identities.
  * Desktop JSON omits media_group_id, so the fallback deliberately requires every signal that
  * survives export: one timestamp, consecutive source IDs, media on every member, and at most one caption.
@@ -119,7 +137,7 @@ export function groupMomentMessages(
 ): MomentMessageGroup[] {
   const groups: PublicMessage[][] = [];
 
-  for (const message of messages) {
+  for (const message of toGroupingOrder(messages)) {
     const current = groups.at(-1);
     if (current && (hasSameExplicitMediaGroup(current, message) || looksLikeDesktopAlbum(current, message))) {
       current.push(message);
