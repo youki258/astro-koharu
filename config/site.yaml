@@ -571,10 +571,10 @@ analytics:
     enabled: true
     id: e7c0102c-e210-4dee-b22b-37161b87e28e
     endpoint: https://stats.youki.fun
-    # statistics_display:
-    #   token: your-umami-share-token
-    #   article_page_views: true
-    #   footer_site_stats: true
+    statistics_display:
+      token: fjkJKdaZfadu3gtA
+      article_page_views: true
+      footer_site_stats: true
 
 # =============================================================================
 # SEO Configuration
