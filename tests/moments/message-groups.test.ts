@@ -133,7 +133,7 @@ test('merges a Desktop album when the API shuffles same-timestamp members', () =
   assert.equal(groups[0].anchor.id, caption.id);
   assert.equal(groups[0].primary.id, caption.id);
   assert.deepEqual(
-    groups[0].messages.map((item) => Number(new URL(item.sourceUrl).pathname.split('/')[2])),
+    groups[0].messages.map((item) => Number(new URL(item.sourceUrl ?? '').pathname.split('/')[2])),
     [715, 716, 717, 718],
   );
 });
