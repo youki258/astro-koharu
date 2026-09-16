@@ -11,7 +11,7 @@ import type { NormalizedMomentsConfig, ResolvedMomentsChannel } from '@lib/confi
 import { displayDate } from '@lib/date';
 import { sanitizeKoharuContentHtml } from '@lib/sanitize';
 import { type GroupMomentMessagesOptions, groupMomentMessages } from './message-groups';
-import { isPublishableReference } from './publish-filter';
+import { filterPublishableGroups, isPublishableReference } from './publish-filter';
 import { getKoharuClient } from './runtime';
 import { channelPath, messagePath, searchPath } from './urls';
 
@@ -106,7 +106,7 @@ export function toMessageViewModels(
   messages: readonly PublicMessage[],
   options: GroupMomentMessagesOptions = {},
 ): MomentMessageViewModel[] {
-  return groupMomentMessages(messages, options).map((group) => {
+  return filterPublishableGroups(config, groupMomentMessages(messages, options)).map((group) => {
     const primary = toMessageViewModel(config, channel, group.primary);
     if (group.messages.length === 1) return primary;
 
