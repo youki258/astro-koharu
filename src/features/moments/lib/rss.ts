@@ -3,6 +3,7 @@ import type { PublicMessage } from '@coszone/koharu-astro';
 import type { NormalizedMomentsConfig, ResolvedMomentsChannel } from '@lib/config/moments';
 import { sanitizeKoharuRssContentHtml } from '@lib/sanitize';
 import { groupMomentMessages } from './message-groups';
+import { filterPublishableGroups } from './publish-filter';
 import { messagePath } from './urls';
 
 export async function buildMomentsRss(options: {
@@ -20,7 +21,10 @@ export async function buildMomentsRss(options: {
     description: options.description,
     site: options.site,
     trailingSlash: false,
-    items: groupMomentMessages(options.messages, { separateLast: options.hasMore }).flatMap(({ anchor, primary }) => {
+    items: filterPublishableGroups(
+      options.config,
+      groupMomentMessages(options.messages, { separateLast: options.hasMore }),
+    ).flatMap(({ anchor, primary }) => {
       const channel = channelsById.get(primary.channel.id);
       if (!channel) return [];
       const plain = primary.content.text?.replace(/\s+/g, ' ').trim();

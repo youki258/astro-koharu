@@ -5,10 +5,10 @@ import MessageCard from '@components/moments/MessageCard.astro';
 import MomentsShell from '@components/moments/MomentsShell.astro';
 import MomentsState from '@components/moments/MomentsState.astro';
 import { momentsConfig } from '@constants/site-config';
-import type { MessagePage } from '@coszone/koharu-astro';
 import Layout from '@layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
 import { getMomentsChannels, listChannelMessages } from '../lib/data';
+import { collectPublishableFeed, type MomentFeed } from '../lib/feed';
 import { cursorPaginationLabels, messageCardLabels, momentsLabels } from '../lib/labels';
 import { resolveMomentsOpenGraph } from '../lib/metadata';
 import { toMomentsHttpError } from '../lib/runtime';
@@ -25,11 +25,14 @@ const channels = await getMomentsChannels().catch((error) => {
   return undefined;
 });
 const primary = channels?.primary;
-let page: MessagePage | undefined;
+let page: MomentFeed | undefined;
 let failure: ReturnType<typeof toMomentsHttpError> | undefined;
 if (primary) {
   try {
-    page = await listChannelMessages(primary.id, cursor);
+    page = await collectPublishableFeed(momentsConfig, {
+      cursor,
+      fetchPage: (feedCursor, limit) => listChannelMessages(primary.id, feedCursor, limit),
+    });
   } catch (error) {
     failure = toMomentsHttpError(error);
     Astro.cache.set(false);
@@ -40,8 +43,8 @@ if (primary) {
 
 const channelViews = (channels?.visible ?? []).map((channel) => toChannelViewModel(momentsConfig, channel, primary?.id));
 const messages =
-  primary && page
-    ? toMessageViewModels(momentsConfig, primary, page.items, {
+  primary && page && page.messages.length > 0
+    ? toMessageViewModels(momentsConfig, primary, page.messages, {
         separateFirst: Boolean(cursor),
         separateLast: Boolean(page.nextCursor),
       })

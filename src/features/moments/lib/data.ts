@@ -41,9 +41,11 @@ export async function listChannelMessages(channelId: string, cursor?: string, li
   );
 }
 
-export async function latestMessages(channelIds: string[], limit = 20): Promise<MessagePage> {
+export async function latestMessages(channelIds: string[], limit = 20, cursor?: string): Promise<MessagePage> {
   if (channelIds.length === 0) return { items: [], nextCursor: null };
-  return requestKoharu('messages.latest', () => getKoharuClient().messages.latest({ channelIds, limit }));
+  return requestKoharu('messages.latest', () =>
+    getKoharuClient().messages.latest({ channelIds, ...(cursor ? { cursor } : {}), limit }),
+  );
 }
 
 export async function getMessageContext(messageId: string): Promise<MessageContext> {

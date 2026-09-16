@@ -9,6 +9,7 @@ import type { SearchMessagePage } from '@coszone/koharu-astro';
 import Layout from '@layouts/Layout.astro';
 import { getMomentsChannels, type MomentsChannels, searchMessages } from '../lib/data';
 import { cursorPaginationLabels, messageCardLabels, momentsLabels } from '../lib/labels';
+import { isPublishableMessage } from '../lib/publish-filter';
 import { toMomentsHttpError } from '../lib/runtime';
 import { momentsPath, searchPath } from '../lib/urls';
 import { toChannelViewModel, toMessageViewModel } from '../lib/view-models';
@@ -48,6 +49,7 @@ const action = searchPath(momentsConfig);
 const canonical = new URL(action, Astro.site).href;
 const channelViews = (channels?.visible ?? []).map((channel) => toChannelViewModel(momentsConfig, channel));
 const results = (page?.items ?? []).flatMap((result) => {
+  if (!isPublishableMessage(momentsConfig, result.message)) return [];
   const channel = channels?.visible.find((item) => item.id === result.message.channel.id);
   if (!channel) return [];
   const view = toMessageViewModel(momentsConfig, channel, result.message);

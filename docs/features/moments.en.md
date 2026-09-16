@@ -74,6 +74,29 @@ navigation:
 
 The placeholder disappears while Moments is disabled. If omitted, the enabled entry is inserted after Archives.
 
+## Publish filter
+
+All channel messages are shown by default. To publish only messages whose text starts with a given hashtag (for example #碎碎念), configure:
+
+```yaml
+moments:
+  filter:
+    hashtags:
+      - '#碎碎念'
+```
+
+Once enabled, the Moments pages, on-site search, and global/channel RSS only show messages whose text starts with a
+configured hashtag. Detail links of unmatched messages return 404, and context navigation skips them. If any member of
+an album matches, the whole group is kept so albums are never torn apart. The suite keeps the full archive, so changing
+or removing this configuration at any time affects no collected data.
+
+Matching rules: the trimmed `content.text` must start with the hashtag, and the character after it must be a tag boundary
+(not a letter, number, or underscore), so `#碎碎念2` does not match `#碎碎念`; media-only messages without text never match.
+The suite paginates raw messages, so rendering follows opaque cursors for up to eight extra pages to fill a display page;
+per-page counts stay near normal at a small latency cost. If the budget ends without matches, the page may render empty
+and further pagination continues. This filter only affects the astro-koharu presentation layer; the suite neither provides
+nor needs such a capability.
+
 ## Routes and content semantics
 
 Moments includes an index, channel feeds, detail pages, cursor pagination, simple search, and global/channel RSS.

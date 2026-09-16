@@ -178,3 +178,33 @@ test('keeps the album GUID stable when a caption is added to another member', as
   assert.match(after, new RegExp(`https://blog\\.example\\.com/moments/daily/${editedSecond.id}`));
   assert.match(after, /Added later/);
 });
+
+test('drops message groups that do not start with a configured publish hashtag', async () => {
+  const tagged = {
+    ...message,
+    id: '018f3f7a-2b1c-7def-8abc-0000000000aa',
+    content: { ...message.content, text: '#碎碎念 有图', html: '<p>#碎碎念 有图</p>' },
+  };
+  const member = {
+    ...message,
+    id: '018f3f7a-2b1c-7def-8abc-0000000000ab',
+    content: { ...message.content, text: null, html: null, kind: 'none' as const },
+  };
+  const plain = { ...message, id: '018f3f7a-2b1c-7def-8abc-0000000000ac' };
+  const filteredConfig = normalizeMomentsConfig({ enabled: true, filter: { hashtags: ['#碎碎念'] } });
+
+  const xml = await (
+    await buildMomentsRss({
+      channels: [channel],
+      config: filteredConfig,
+      description: 'Moments',
+      hasMore: false,
+      messages: [tagged, member, plain],
+      site: new URL('https://blog.example.com'),
+      title: 'Moments',
+    })
+  ).text();
+
+  assert.match(xml, /#碎碎念 有图/);
+  assert.doesNotMatch(xml, /Stable RSS item/);
+});

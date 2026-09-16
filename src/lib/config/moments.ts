@@ -18,6 +18,10 @@ export interface NormalizedMomentsChannelConfig extends Omit<MomentsChannelConfi
   aliases: string[];
 }
 
+export interface NormalizedMomentsFilterConfig {
+  hashtags: string[];
+}
+
 export interface NormalizedMomentsConfig {
   enabled: boolean;
   path: string;
@@ -26,6 +30,7 @@ export interface NormalizedMomentsConfig {
   ogImage?: string;
   pathAliases: string[];
   channels: NormalizedMomentsChannelConfig[];
+  filter?: NormalizedMomentsFilterConfig;
   /** Build-time URL names that runtime-discovered channel fallbacks cannot use. */
   channelSlugBlocklist: string[];
 }
@@ -117,6 +122,36 @@ function normalizeOgImage(value: unknown, field: string): string | undefined {
   return url.href;
 }
 
+const MOMENT_HASHTAG_LABEL = /^[\p{L}\p{N}_]{2,32}$/u;
+
+function normalizeMomentsFilter(value: unknown): NormalizedMomentsFilterConfig | undefined {
+  if (value === undefined) return undefined;
+  if (typeof value !== 'object' || value === null || Array.isArray(value)) {
+    configError('"filter" must be an object.');
+  }
+  const hashtagsValue = (value as { hashtags?: unknown }).hashtags;
+  if (!Array.isArray(hashtagsValue)) configError('"filter.hashtags" must be an array of hashtags.');
+  if (hashtagsValue.length === 0) configError('"filter.hashtags" must contain at least one hashtag.');
+
+  const hashtags: string[] = [];
+  const seen = new Set<string>();
+  for (const [index, item] of hashtagsValue.entries()) {
+    if (typeof item !== 'string' || item.trim() === '') {
+      configError(`"filter.hashtags[${index}]" must be a non-empty hashtag like "#碎碎念".`);
+    }
+    const label = item.trim().replace(/^#/, '');
+    if (!MOMENT_HASHTAG_LABEL.test(label)) {
+      configError(`"filter.hashtags[${index}]" must be a hashtag like "#碎碎念" (2-32 letters, numbers, or underscores).`);
+    }
+    const hashtag = `#${label}`;
+    const key = hashtag.toLowerCase();
+    if (seen.has(key)) configError(`"filter.hashtags" duplicates "${hashtag}".`);
+    seen.add(key);
+    hashtags.push(hashtag);
+  }
+  return { hashtags };
+}
+
 export function normalizeMomentsConfig(
   raw: MomentsConfig | undefined,
   context: MomentsValidationContext = {},
@@ -204,6 +239,8 @@ export function normalizeMomentsConfig(
   });
   if (primaryCount > 1) configError('At most one channel may set "primary: true".');
 
+  const filter = normalizeMomentsFilter(raw?.filter);
+
   return {
     enabled: raw?.enabled ?? false,
     path,
@@ -212,6 +249,7 @@ export function normalizeMomentsConfig(
     ogImage: normalizeOgImage(raw?.ogImage, 'ogImage'),
     pathAliases,
     channels,
+    ...(filter ? { filter } : {}),
     channelSlugBlocklist: [...unavailableChannelSlugs],
   };
 }

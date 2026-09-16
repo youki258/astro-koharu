@@ -5,9 +5,9 @@ import MessageCard from '@components/moments/MessageCard.astro';
 import MomentsShell from '@components/moments/MomentsShell.astro';
 import MomentsState from '@components/moments/MomentsState.astro';
 import { momentsConfig } from '@constants/site-config';
-import type { MessagePage } from '@coszone/koharu-astro';
 import Layout from '@layouts/Layout.astro';
 import { findChannel, getMomentsChannels, listChannelMessages, type MomentsChannels } from '../lib/data';
+import { collectPublishableFeed, type MomentFeed } from '../lib/feed';
 import { cursorPaginationLabels, messageCardLabels, momentsLabels } from '../lib/labels';
 import { resolveMomentsOpenGraph } from '../lib/metadata';
 import { toMomentsHttpError } from '../lib/runtime';
@@ -25,10 +25,13 @@ try {
 }
 const channel = channels && findChannel(channels, Astro.params.channel);
 if (!failure && !channel) failure = { status: 404, type: 'not-found' };
-let page: MessagePage | undefined;
+let page: MomentFeed | undefined;
 if (channel && !failure) {
   try {
-    page = await listChannelMessages(channel.id, cursor);
+    page = await collectPublishableFeed(momentsConfig, {
+      cursor,
+      fetchPage: (feedCursor, limit) => listChannelMessages(channel.id, feedCursor, limit),
+    });
   } catch (error) {
     failure = toMomentsHttpError(error);
   }
@@ -45,8 +48,8 @@ const canonical = new URL(canonicalPath, Astro.site).href;
 const openGraph = resolveMomentsOpenGraph({ canonical, channel, config: momentsConfig, kind: 'channel' });
 const channelViews = (channels?.visible ?? []).map((item) => toChannelViewModel(momentsConfig, item, channel?.id));
 const messages =
-  channel && page
-    ? toMessageViewModels(momentsConfig, channel, page.items, {
+  channel && page && page.messages.length > 0
+    ? toMessageViewModels(momentsConfig, channel, page.messages, {
         separateFirst: Boolean(cursor),
         separateLast: Boolean(page.nextCursor),
       })

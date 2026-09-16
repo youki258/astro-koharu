@@ -10,6 +10,7 @@ import Layout from '@layouts/Layout.astro';
 import { findChannel, getMessageContext, getMomentsChannels, type MomentsChannels } from '../lib/data';
 import { messageCardLabels, momentsLabels } from '../lib/labels';
 import { resolveMomentsOpenGraph } from '../lib/metadata';
+import { isPublishableMessage } from '../lib/publish-filter';
 import { toMomentsHttpError } from '../lib/runtime';
 import { messagePath, rssPath } from '../lib/urls';
 import { messageTitle, toChannelViewModel, toContextViewModel, toMessageViewModel } from '../lib/view-models';
@@ -30,7 +31,7 @@ if (!failure && !messageId.success) failure = { status: 404, type: 'not-found' }
 if (channel && messageId.success && !failure) {
   try {
     context = await getMessageContext(messageId.data);
-    if (context.message.channel.id !== channel.id) {
+    if (context.message.channel.id !== channel.id || !isPublishableMessage(momentsConfig, context.message)) {
       context = undefined;
       failure = { status: 404, type: 'not-found' };
     }

@@ -11,6 +11,7 @@ import type { NormalizedMomentsConfig, ResolvedMomentsChannel } from '@lib/confi
 import { displayDate } from '@lib/date';
 import { sanitizeKoharuContentHtml } from '@lib/sanitize';
 import { type GroupMomentMessagesOptions, groupMomentMessages } from './message-groups';
+import { isPublishableReference } from './publish-filter';
 import { getKoharuClient } from './runtime';
 import { channelPath, messagePath, searchPath } from './urls';
 
@@ -123,7 +124,7 @@ export function toContextViewModel(
   channel: ResolvedMomentsChannel,
   reference: MessageContextReference | null,
 ): MomentContextItemViewModel | undefined {
-  if (!reference || reference.channelId !== channel.id) return undefined;
+  if (!reference || reference.channelId !== channel.id || !isPublishableReference(config, reference)) return undefined;
   return {
     href: messagePath(config, channel, reference.id),
     publishedAt: reference.publishedAt,

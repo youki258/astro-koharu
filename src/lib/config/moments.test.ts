@@ -6,6 +6,7 @@ import {
   resolveMomentsChannels,
   resolveMomentsNavigation,
 } from './moments';
+import type { MomentsConfig } from './types';
 
 const FIRST_ID = '550e8400-e29b-41d4-a716-446655440000';
 const SECOND_ID = '018f3f7a-2b1c-7def-8abc-1234567890ab';
@@ -269,4 +270,23 @@ test('accepts safe public and HTTPS OG images and rejects unsafe values', () => 
   for (const ogImage of ['img/relative.png', 'http://cdn.example.com/image.png', '/../secret', '//cdn.example.com/image.png']) {
     assert.throws(() => normalizeMomentsConfig({ ogImage }), /safe public path or an absolute HTTPS URL/);
   }
+});
+
+test('normalizes and validates the publish hashtag filter', () => {
+  assert.equal(normalizeMomentsConfig({ enabled: true }).filter, undefined);
+  assert.deepEqual(normalizeMomentsConfig({ filter: { hashtags: ['碎碎念', '#Daily_Notes'] } }).filter, {
+    hashtags: ['#碎碎念', '#Daily_Notes'],
+  });
+  for (const filter of [
+    null,
+    'yes',
+    {},
+    { hashtags: '碎碎念' },
+    { hashtags: [] },
+    { hashtags: ['#短'] },
+    { hashtags: ['碎 碎'] },
+  ] as unknown[]) {
+    assert.throws(() => normalizeMomentsConfig({ filter } as unknown as MomentsConfig), /filter/);
+  }
+  assert.throws(() => normalizeMomentsConfig({ filter: { hashtags: ['#碎碎念', '#碎碎念'] } }), /duplicates "#碎碎念"/);
 });

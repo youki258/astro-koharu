@@ -245,6 +245,13 @@ export interface MomentsConfig {
   pathAliases?: string[];
   /** Optional channel overrides. Unconfigured public channels are appended. */
   channels?: MomentsChannelConfig[];
+  /** Publish filter. Unmatched messages stay archived in the suite but are hidden here. */
+  filter?: MomentsFilterConfig;
+}
+
+export interface MomentsFilterConfig {
+  /** Publish only messages whose text starts with one of these hashtags, e.g. ['#碎碎念']. */
+  hashtags?: string[];
 }
 
 // =============================================================================

@@ -330,6 +330,9 @@ moments:
   path: moments
   title: 碎碎念
   description: 记录频道中的日常消息
+  filter: # 只发布正文以指定 hashtag 开头的消息；suite 侧仍完整归档，可随时放开
+    hashtags:
+      - '#碎碎念'
   # ogImage: /img/moments-og.png
   # pathAliases:
   #   - telegram
