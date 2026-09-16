@@ -2,6 +2,9 @@ import type { PublicMessage } from '@coszone/koharu-astro';
 
 const TELEGRAM_ALBUM_LIMIT = 10;
 
+/** Telegram assigns album members near-identical timestamps that can straddle a second boundary. */
+const DESKTOP_ALBUM_TIMESTAMP_TOLERANCE_MS = 2_000;
+
 export interface MomentMessageGroup {
   anchor: PublicMessage;
   messages: readonly PublicMessage[];
@@ -44,15 +47,6 @@ function telegramSourceMessage(message: PublicMessage): TelegramSourceMessage | 
   };
 }
 
-function hasSameExplicitMediaGroup(messages: readonly PublicMessage[], candidate: PublicMessage): boolean {
-  const mediaGroupId = messages[0]?.mediaGroupId;
-  return Boolean(
-    mediaGroupId &&
-      candidate.mediaGroupId === mediaGroupId &&
-      messages.every((message) => message.channel.id === candidate.channel.id),
-  );
-}
-
 function stableGroupAnchor(messages: readonly PublicMessage[]): PublicMessage | undefined {
   const first = messages[0];
   if (!first) return undefined;
@@ -71,23 +65,9 @@ function stableGroupAnchor(messages: readonly PublicMessage[]): PublicMessage | 
     .reduce((anchor, candidate) => (candidate.id.localeCompare(anchor.id) < 0 ? candidate : anchor), first);
 }
 
-function looksLikeDesktopAlbum(messages: readonly PublicMessage[], candidate: PublicMessage): boolean {
-  const first = messages[0];
-  const previous = messages.at(-1);
-  if (!first || !previous || messages.length >= TELEGRAM_ALBUM_LIMIT) return false;
-  if (candidate.mediaGroupId !== null || messages.some((message) => message.mediaGroupId !== null)) return false;
-  if (candidate.channel.id !== first.channel.id || candidate.publishedAt !== first.publishedAt) return false;
-  if (candidate.media.length === 0 || messages.some((message) => message.media.length === 0)) return false;
-
-  const bodyCount = messages.filter(hasVisibleBody).length + Number(hasVisibleBody(candidate));
-  if (bodyCount > 1) return false;
-
-  const previousSource = telegramSourceMessage(previous);
-  const candidateSource = telegramSourceMessage(candidate);
-  if (!previousSource || !candidateSource || previousSource.channel !== candidateSource.channel) return false;
-
-  const difference = candidateSource.id - previousSource.id;
-  return difference === 1n || difference === -1n;
+function withinDesktopAlbumTimestamp(a: string, b: string): boolean {
+  const difference = Math.abs(Date.parse(a) - Date.parse(b));
+  return Number.isFinite(difference) && difference <= DESKTOP_ALBUM_TIMESTAMP_TOLERANCE_MS;
 }
 
 function toGroup(messages: readonly PublicMessage[]): MomentMessageGroup {
@@ -110,41 +90,110 @@ function separateBoundaryGroups(groups: readonly PublicMessage[][], options: Gro
 
 /**
  * The suite orders same-timestamp messages by their opaque suite UUID, so Desktop-imported album members can
- * arrive shuffled; stable sorting restores source-posting adjacency for the conservative album fallback while
- * keeping the page's newest-first order.
+ * arrive shuffled, and one album's members can straddle a second boundary. Clustering therefore matches members
+ * by (channel, consecutive source ID, near-identical timestamps) instead of relying on input adjacency, while
+ * explicit mediaGroupId members may appear anywhere in the input.
  */
-function toGroupingOrder(messages: readonly PublicMessage[]): PublicMessage[] {
-  return [...messages].sort((a, b) => {
-    if (a.publishedAt !== b.publishedAt) return a.publishedAt < b.publishedAt ? 1 : -1;
-    if (a.channel.id !== b.channel.id) return a.channel.id < b.channel.id ? -1 : 1;
-    const sourceA = telegramSourceMessage(a);
-    const sourceB = telegramSourceMessage(b);
-    if (sourceA && sourceB && sourceA.channel === sourceB.channel && sourceA.id !== sourceB.id) {
-      return sourceA.id < sourceB.id ? -1 : 1;
+interface DesktopChain {
+  members: PublicMessage[];
+  firstPublishedAt: string;
+  bodyCount: number;
+}
+
+function canJoinDesktopChain(chain: DesktopChain, candidate: PublicMessage, source: TelegramSourceMessage): boolean {
+  const previous = chain.members.at(-1);
+  if (!previous) return false;
+  const previousSource = telegramSourceMessage(previous);
+  if (!previousSource || previousSource.channel !== source.channel) return false;
+  const difference = source.id - previousSource.id;
+  if (difference !== 1n && difference !== -1n) return false;
+  if (!withinDesktopAlbumTimestamp(chain.firstPublishedAt, candidate.publishedAt)) return false;
+  if (chain.members.length >= TELEGRAM_ALBUM_LIMIT) return false;
+  if (candidate.media.length === 0) return false;
+  return chain.bodyCount + Number(hasVisibleBody(candidate)) <= 1;
+}
+
+function clusterMessages(messages: readonly PublicMessage[]): PublicMessage[][] {
+  const clusters: PublicMessage[][] = [];
+  const explicitClusters = new Map<string, PublicMessage[]>();
+  const desktopCandidates: { message: PublicMessage; source: TelegramSourceMessage }[] = [];
+
+  for (const message of messages) {
+    if (message.mediaGroupId !== null) {
+      const key = `${message.channel.id}:${message.mediaGroupId}`;
+      let cluster = explicitClusters.get(key);
+      if (!cluster) {
+        cluster = [];
+        explicitClusters.set(key, cluster);
+        clusters.push(cluster);
+      }
+      cluster.push(message);
+      continue;
     }
+    const source = telegramSourceMessage(message);
+    if (source && message.media.length > 0) {
+      desktopCandidates.push({ message, source });
+      continue;
+    }
+    clusters.push([message]);
+  }
+
+  desktopCandidates.sort((a, b) => {
+    if (a.source.channel !== b.source.channel) return a.source.channel < b.source.channel ? -1 : 1;
+    if (a.source.id !== b.source.id) return a.source.id < b.source.id ? -1 : 1;
+    return 0;
+  });
+  const desktopChains: DesktopChain[] = [];
+  for (const { message, source } of desktopCandidates) {
+    const chain = desktopChains.at(-1);
+    const lastSource = chain ? telegramSourceMessage(chain.members.at(-1) ?? message) : undefined;
+    if (chain && lastSource && canJoinDesktopChain(chain, message, source) && source.id - lastSource.id === 1n) {
+      chain.members.push(message);
+      chain.bodyCount += Number(hasVisibleBody(message));
+    } else {
+      desktopChains.push({
+        members: [message],
+        firstPublishedAt: message.publishedAt,
+        bodyCount: Number(hasVisibleBody(message)),
+      });
+    }
+  }
+  clusters.push(...desktopChains.map((chain) => chain.members));
+
+  return clusters.map(orderClusterMembers).sort((a, b) => {
+    const timeA = Math.max(...a.map((message) => Date.parse(message.publishedAt)));
+    const timeB = Math.max(...b.map((message) => Date.parse(message.publishedAt)));
+    if (timeA !== timeB) return timeA < timeB ? 1 : -1;
     return 0;
   });
 }
 
+/** Render album media in Telegram posting order even when the suite shuffles same-timestamp members. */
+function orderClusterMembers(members: PublicMessage[]): PublicMessage[] {
+  const sources = members.map(telegramSourceMessage);
+  const channel = sources[0]?.channel;
+  if (!channel || sources.some((source) => source?.channel !== channel)) return members;
+  return members
+    .map((message, index) => ({ message, index, source: sources[index] }))
+    .sort((a, b) => {
+      const sourceA = a.source;
+      const sourceB = b.source;
+      if (!sourceA || !sourceB) return a.index - b.index;
+      if (sourceA.id !== sourceB.id) return sourceA.id < sourceB.id ? -1 : 1;
+      return a.index - b.index;
+    })
+    .map((item) => item.message);
+}
+
 /**
- * Groups contiguous Telegram album members without changing their stable Suite identities.
+ * Groups Telegram album members without changing their stable Suite identities.
  * Desktop JSON omits media_group_id, so the fallback deliberately requires every signal that
- * survives export: one timestamp, consecutive source IDs, media on every member, and at most one caption.
+ * survives export: near-identical timestamps, consecutive source IDs, media on every member,
+ * and at most one caption.
  */
 export function groupMomentMessages(
   messages: readonly PublicMessage[],
   options: GroupMomentMessagesOptions = {},
 ): MomentMessageGroup[] {
-  const groups: PublicMessage[][] = [];
-
-  for (const message of toGroupingOrder(messages)) {
-    const current = groups.at(-1);
-    if (current && (hasSameExplicitMediaGroup(current, message) || looksLikeDesktopAlbum(current, message))) {
-      current.push(message);
-    } else {
-      groups.push([message]);
-    }
-  }
-
-  return separateBoundaryGroups(groups, options).map(toGroup);
+  return separateBoundaryGroups(clusterMessages(messages), options).map(toGroup);
 }

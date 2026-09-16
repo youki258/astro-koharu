@@ -137,3 +137,43 @@ test('merges a Desktop album when the API shuffles same-timestamp members', () =
     [715, 716, 717, 718],
   );
 });
+
+test('merges a nine-photo Desktop album whose members straddle a second boundary', () => {
+  const t1 = '2026-09-07T16:10:51.000Z';
+  const t2 = '2026-09-07T16:10:52.000Z';
+  const caption = message(715, { text: '#碎碎念 好喜欢刀剑神域', publishedAt: t1 });
+  const shuffled = [
+    caption,
+    message(723, { publishedAt: t2 }),
+    message(717, { publishedAt: t1 }),
+    message(720, { publishedAt: t2 }),
+    message(718, { publishedAt: t1 }),
+    message(721, { publishedAt: t2 }),
+    message(716, { publishedAt: t1 }),
+    message(722, { publishedAt: t2 }),
+    message(719, { publishedAt: t1 }),
+  ];
+
+  const groups = groupMomentMessages(shuffled);
+  assert.equal(groups.length, 1);
+  assert.equal(groups[0].messages.length, 9);
+  assert.equal(groups[0].anchor.id, caption.id);
+  assert.equal(groups[0].primary.id, caption.id);
+  assert.deepEqual(
+    groups[0].messages.map((item) => Number(new URL(item.sourceUrl ?? '').pathname.split('/')[2])),
+    [715, 716, 717, 718, 719, 720, 721, 722, 723],
+  );
+});
+
+test('keeps Desktop messages apart beyond the timestamp tolerance', () => {
+  const groups = groupMomentMessages([
+    message(715, { text: '#碎碎念 第一条', publishedAt: '2026-09-07T16:10:51.000Z' }),
+    message(716, { publishedAt: '2026-09-07T16:10:54.000Z' }),
+  ]);
+
+  assert.equal(groups.length, 2);
+  assert.deepEqual(
+    groups.map((group) => Number(new URL(group.primary.sourceUrl ?? '').pathname.split('/')[2])),
+    [716, 715],
+  );
+});
