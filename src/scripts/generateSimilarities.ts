@@ -42,6 +42,10 @@ const SUMMARIES_FILE = 'src/assets/summaries.json';
 
 // Cache models locally
 env.cacheDir = './.cache/transformers';
+// Optional mirror for networks where huggingface.co is unreachable (e.g. CN)
+if (process.env.HF_ENDPOINT) {
+  env.remoteHost = process.env.HF_ENDPOINT.endsWith('/') ? process.env.HF_ENDPOINT : `${process.env.HF_ENDPOINT}/`;
+}
 
 // --------- Type Definitions ---------
 interface PostData {

@@ -1,326 +1,1379 @@
 {
-  "weekly-example-1": [
+  "ctf-iscc-2026": [
     {
-      "slug": "note/encrypted-post-demo",
-      "title": "加密文章演示",
-      "similarity": 0.496
+      "slug": "linked-list",
+      "title": "链表基础与 LeetCode 练习",
+      "similarity": 0.404
     },
     {
-      "slug": "custom-keywords",
-      "title": "自定义关键词示例",
-      "similarity": 0.482
+      "slug": "competition-basics",
+      "title": "编程基础：从输入输出到算法入门",
+      "similarity": 0.4
     },
     {
-      "slug": "hello-world",
-      "title": "Hello World",
-      "similarity": 0.478
+      "slug": "html-basics",
+      "title": "HTML、CSS 基础与页面布局笔记",
+      "similarity": 0.397
     },
     {
-      "slug": "astro-koharu-guide",
-      "title": "astro-koharu 使用指南",
-      "similarity": 0.449
+      "slug": "iris-knn",
+      "title": "机器学习入门：从 ML 概述到 KNN 分类",
+      "similarity": 0.388
     },
     {
-      "slug": "markdown-features",
-      "title": "Markdown 增强功能演示",
-      "similarity": 0.418
+      "slug": "codex-best-practices",
+      "title": "如何使用好Codex等ai工具",
+      "similarity": 0.387
     }
   ],
-  "getting-started": [
+  "word-layout": [
     {
-      "slug": "astro-koharu-guide",
-      "title": "astro-koharu 使用指南",
-      "similarity": 0.752
+      "slug": "html-basics",
+      "title": "HTML、CSS 基础与页面布局笔记",
+      "similarity": 0.504
     },
     {
-      "slug": "theme-customization",
-      "title": "主题定制指南",
-      "similarity": 0.675
-    },
-    {
-      "slug": "markdown-features",
-      "title": "Markdown 增强功能演示",
-      "similarity": 0.649
-    },
-    {
-      "slug": "astro-6-migration",
-      "title": "从 Astro 5 到 Astro 6：astro-koharu 的一次完整迁移实录",
-      "similarity": 0.576
-    },
-    {
-      "slug": "toc-no-numbering",
-      "title": "关闭目录编号示例",
-      "similarity": 0.513
-    }
-  ],
-  "astro-koharu-guide": [
-    {
-      "slug": "getting-started",
-      "title": "欢迎使用 astro-koharu",
-      "similarity": 0.752
-    },
-    {
-      "slug": "markdown-features",
-      "title": "Markdown 增强功能演示",
-      "similarity": 0.735
-    },
-    {
-      "slug": "theme-customization",
-      "title": "主题定制指南",
-      "similarity": 0.7
-    },
-    {
-      "slug": "astro-6-migration",
-      "title": "从 Astro 5 到 Astro 6：astro-koharu 的一次完整迁移实录",
-      "similarity": 0.583
-    },
-    {
-      "slug": "toc-no-numbering",
-      "title": "关闭目录编号示例",
-      "similarity": 0.561
-    }
-  ],
-  "toc-no-numbering": [
-    {
-      "slug": "theme-customization",
-      "title": "主题定制指南",
-      "similarity": 0.564
-    },
-    {
-      "slug": "astro-koharu-guide",
-      "title": "astro-koharu 使用指南",
-      "similarity": 0.561
-    },
-    {
-      "slug": "markdown-features",
-      "title": "Markdown 增强功能演示",
-      "similarity": 0.541
-    },
-    {
-      "slug": "getting-started",
-      "title": "欢迎使用 astro-koharu",
-      "similarity": 0.513
-    },
-    {
-      "slug": "astro-6-migration",
-      "title": "从 Astro 5 到 Astro 6：astro-koharu 的一次完整迁移实录",
-      "similarity": 0.467
-    }
-  ],
-  "note/shoka-features": [
-    {
-      "slug": "custom-keywords",
-      "title": "自定义关键词示例",
-      "similarity": 0.49
-    },
-    {
-      "slug": "infographic-guide",
-      "title": "Infographic 信息图指南",
-      "similarity": 0.485
-    },
-    {
-      "slug": "note/encrypted-post-demo",
-      "title": "加密文章演示",
-      "similarity": 0.477
-    },
-    {
-      "slug": "markdown-features",
-      "title": "Markdown 增强功能演示",
-      "similarity": 0.469
-    },
-    {
-      "slug": "weekly-example-1",
-      "title": "示例周刊 Vol.1",
-      "similarity": 0.414
-    }
-  ],
-  "markdown-features": [
-    {
-      "slug": "astro-koharu-guide",
-      "title": "astro-koharu 使用指南",
-      "similarity": 0.735
-    },
-    {
-      "slug": "getting-started",
-      "title": "欢迎使用 astro-koharu",
-      "similarity": 0.649
-    },
-    {
-      "slug": "theme-customization",
-      "title": "主题定制指南",
-      "similarity": 0.611
-    },
-    {
-      "slug": "toc-no-numbering",
-      "title": "关闭目录编号示例",
-      "similarity": 0.541
-    },
-    {
-      "slug": "infographic-guide",
-      "title": "Infographic 信息图指南",
-      "similarity": 0.496
-    }
-  ],
-  "note/encrypted-post-demo": [
-    {
-      "slug": "hello-world",
-      "title": "Hello World",
-      "similarity": 0.529
-    },
-    {
-      "slug": "custom-keywords",
-      "title": "自定义关键词示例",
-      "similarity": 0.518
-    },
-    {
-      "slug": "weekly-example-1",
-      "title": "示例周刊 Vol.1",
-      "similarity": 0.496
-    },
-    {
-      "slug": "note/shoka-features",
-      "title": "Shoka 主题 Markdown 语法演示",
-      "similarity": 0.477
-    },
-    {
-      "slug": "astro-koharu-guide",
-      "title": "astro-koharu 使用指南",
-      "similarity": 0.455
-    }
-  ],
-  "custom-keywords": [
-    {
-      "slug": "note/encrypted-post-demo",
-      "title": "加密文章演示",
-      "similarity": 0.518
-    },
-    {
-      "slug": "note/shoka-features",
-      "title": "Shoka 主题 Markdown 语法演示",
-      "similarity": 0.49
-    },
-    {
-      "slug": "weekly-example-1",
-      "title": "示例周刊 Vol.1",
-      "similarity": 0.482
-    },
-    {
-      "slug": "theme-customization",
-      "title": "主题定制指南",
-      "similarity": 0.455
-    },
-    {
-      "slug": "hello-world",
-      "title": "Hello World",
-      "similarity": 0.444
-    }
-  ],
-  "hello-world": [
-    {
-      "slug": "note/encrypted-post-demo",
-      "title": "加密文章演示",
-      "similarity": 0.529
-    },
-    {
-      "slug": "astro-koharu-guide",
-      "title": "astro-koharu 使用指南",
-      "similarity": 0.527
-    },
-    {
-      "slug": "weekly-example-1",
-      "title": "示例周刊 Vol.1",
-      "similarity": 0.478
-    },
-    {
-      "slug": "theme-customization",
-      "title": "主题定制指南",
-      "similarity": 0.462
-    },
-    {
-      "slug": "custom-keywords",
-      "title": "自定义关键词示例",
-      "similarity": 0.444
-    }
-  ],
-  "theme-customization": [
-    {
-      "slug": "astro-koharu-guide",
-      "title": "astro-koharu 使用指南",
-      "similarity": 0.7
-    },
-    {
-      "slug": "getting-started",
-      "title": "欢迎使用 astro-koharu",
-      "similarity": 0.675
-    },
-    {
-      "slug": "markdown-features",
-      "title": "Markdown 增强功能演示",
-      "similarity": 0.611
-    },
-    {
-      "slug": "toc-no-numbering",
-      "title": "关闭目录编号示例",
-      "similarity": 0.564
-    },
-    {
-      "slug": "hello-world",
-      "title": "Hello World",
-      "similarity": 0.462
-    }
-  ],
-  "infographic-guide": [
-    {
-      "slug": "astro-koharu-guide",
-      "title": "astro-koharu 使用指南",
+      "slug": "git-usage-guide",
+      "title": "Git 使用指南",
       "similarity": 0.501
     },
     {
-      "slug": "markdown-features",
-      "title": "Markdown 增强功能演示",
+      "slug": "jwt-auth",
+      "title": "登录认证与 JWT 令牌笔记",
+      "similarity": 0.501
+    },
+    {
+      "slug": "cpp-knowledge-points",
+      "title": "C++ 知识点",
+      "similarity": 0.49
+    },
+    {
+      "slug": "mysql",
+      "title": "MySQL 基础与 SQL 语句笔记",
+      "similarity": 0.487
+    }
+  ],
+  "vscode-ssh-docker": [
+    {
+      "slug": "modularity-vite-npm",
+      "title": "现代前端基础：模块化、npm 与 Vite",
+      "similarity": 0.469
+    },
+    {
+      "slug": "git-usage-guide",
+      "title": "Git 使用指南",
+      "similarity": 0.463
+    },
+    {
+      "slug": "maven",
+      "title": "Maven 项目构建与依赖管理笔记",
+      "similarity": 0.463
+    },
+    {
+      "slug": "file-upload",
+      "title": "文件上传与异常处理",
+      "similarity": 0.418
+    },
+    {
+      "slug": "vm-network-config",
+      "title": "虚拟机网络配置",
+      "similarity": 0.414
+    }
+  ],
+  "vmware-download": [
+    {
+      "slug": "git-usage-guide",
+      "title": "Git 使用指南",
+      "similarity": 0.488
+    },
+    {
+      "slug": "vm-network-config",
+      "title": "虚拟机网络配置",
+      "similarity": 0.459
+    },
+    {
+      "slug": "codex-best-practices",
+      "title": "如何使用好Codex等ai工具",
+      "similarity": 0.388
+    },
+    {
+      "slug": "vscode-ssh-docker",
+      "title": "VSCode + SSH + Docker 完整配置流程",
+      "similarity": 0.386
+    },
+    {
+      "slug": "logback",
+      "title": "Logback 日志框架入门笔记",
+      "similarity": 0.379
+    }
+  ],
+  "intro-to-k8s": [
+    {
+      "slug": "spring-boot",
+      "title": "Spring Boot Web 基础学习笔记",
+      "similarity": 0.476
+    },
+    {
+      "slug": "vm-network-config",
+      "title": "虚拟机网络配置",
+      "similarity": 0.451
+    },
+    {
+      "slug": "iris-knn",
+      "title": "机器学习入门：从 ML 概述到 KNN 分类",
+      "similarity": 0.446
+    },
+    {
+      "slug": "competition-basics",
+      "title": "编程基础：从输入输出到算法入门",
+      "similarity": 0.432
+    },
+    {
+      "slug": "modularity-vite-npm",
+      "title": "现代前端基础：模块化、npm 与 Vite",
+      "similarity": 0.42
+    }
+  ],
+  "git-usage-guide": [
+    {
+      "slug": "junit",
+      "title": "JUnit 单元测试学习笔记",
+      "similarity": 0.545
+    },
+    {
+      "slug": "html-basics",
+      "title": "HTML、CSS 基础与页面布局笔记",
+      "similarity": 0.542
+    },
+    {
+      "slug": "mysql",
+      "title": "MySQL 基础与 SQL 语句笔记",
+      "similarity": 0.54
+    },
+    {
+      "slug": "js-basics",
+      "title": "JavaScript 基础语法笔记",
+      "similarity": 0.53
+    },
+    {
+      "slug": "logback",
+      "title": "Logback 日志框架入门笔记",
+      "similarity": 0.522
+    }
+  ],
+  "codex-best-practices": [
+    {
+      "slug": "cli-practice-guide",
+      "title": "CLI Agent 实践指南：从 Claude Code 到通用方法论",
+      "similarity": 0.658
+    },
+    {
+      "slug": "git-usage-guide",
+      "title": "Git 使用指南",
       "similarity": 0.496
     },
     {
-      "slug": "note/shoka-features",
-      "title": "Shoka 主题 Markdown 语法演示",
-      "similarity": 0.485
+      "slug": "html-basics",
+      "title": "HTML、CSS 基础与页面布局笔记",
+      "similarity": 0.491
     },
     {
-      "slug": "custom-keywords",
-      "title": "自定义关键词示例",
-      "similarity": 0.419
+      "slug": "js-basics",
+      "title": "JavaScript 基础语法笔记",
+      "similarity": 0.479
     },
     {
-      "slug": "theme-customization",
-      "title": "主题定制指南",
-      "similarity": 0.418
+      "slug": "vue-basics",
+      "title": "Vue 基础语法与数据驱动视图笔记",
+      "similarity": 0.466
     }
   ],
-  "astro-6-migration": [
+  "cli-practice-guide": [
     {
-      "slug": "astro-koharu-guide",
-      "title": "astro-koharu 使用指南",
-      "similarity": 0.583
+      "slug": "codex-best-practices",
+      "title": "如何使用好Codex等ai工具",
+      "similarity": 0.658
     },
     {
-      "slug": "getting-started",
-      "title": "欢迎使用 astro-koharu",
-      "similarity": 0.576
+      "slug": "git-usage-guide",
+      "title": "Git 使用指南",
+      "similarity": 0.51
     },
     {
-      "slug": "toc-no-numbering",
-      "title": "关闭目录编号示例",
-      "similarity": 0.467
+      "slug": "competition-basics",
+      "title": "编程基础：从输入输出到算法入门",
+      "similarity": 0.466
     },
     {
-      "slug": "markdown-features",
-      "title": "Markdown 增强功能演示",
+      "slug": "modularity-vite-npm",
+      "title": "现代前端基础：模块化、npm 与 Vite",
+      "similarity": 0.436
+    },
+    {
+      "slug": "restful-crud",
+      "title": "RESTful、Apifox 与 CRUD 接口实践",
+      "similarity": 0.429
+    }
+  ],
+  "vm-use-host-clash": [
+    {
+      "slug": "flclash-ssh-misroute",
+      "title": "SSH 为什么会连到错误的服务器？一次 FlClash 核心异常排查",
+      "similarity": 0.425
+    },
+    {
+      "slug": "cdma-csma",
+      "title": "CDMA 与 CSMA 协议笔记",
+      "similarity": 0.349
+    },
+    {
+      "slug": "campus-network-ip",
+      "title": "校园网 IP 切换原理",
+      "similarity": 0.348
+    },
+    {
+      "slug": "frontend-backend-separation",
+      "title": "前后端分离开发笔记",
+      "similarity": 0.345
+    },
+    {
+      "slug": "modularity-vite-npm",
+      "title": "现代前端基础：模块化、npm 与 Vite",
+      "similarity": 0.332
+    }
+  ],
+  "vm-network-config": [
+    {
+      "slug": "vlan-ipv4",
+      "title": "VLAN 与 IPv4 地址笔记",
+      "similarity": 0.484
+    },
+    {
+      "slug": "vmware-download",
+      "title": "VMware Workstation 下载指南",
+      "similarity": 0.459
+    },
+    {
+      "slug": "intro-to-k8s",
+      "title": "初识 Kubernetes：从 Service 与 CoreDNS 理解服务发现",
+      "similarity": 0.451
+    },
+    {
+      "slug": "campus-network-ip",
+      "title": "校园网 IP 切换原理",
+      "similarity": 0.428
+    },
+    {
+      "slug": "vscode-ssh-docker",
+      "title": "VSCode + SSH + Docker 完整配置流程",
+      "similarity": 0.414
+    }
+  ],
+  "vlan-ipv4": [
+    {
+      "slug": "vm-network-config",
+      "title": "虚拟机网络配置",
+      "similarity": 0.484
+    },
+    {
+      "slug": "osi-model",
+      "title": "计算机网络基础：OSI 模型与网络设备",
+      "similarity": 0.449
+    },
+    {
+      "slug": "physical-datalink",
+      "title": "物理层与数据链路层笔记",
+      "similarity": 0.44
+    },
+    {
+      "slug": "campus-network-ip",
+      "title": "校园网 IP 切换原理",
+      "similarity": 0.422
+    },
+    {
+      "slug": "cdma-csma",
+      "title": "CDMA 与 CSMA 协议笔记",
+      "similarity": 0.408
+    }
+  ],
+  "routing": [
+    {
+      "slug": "reliable-transmission",
+      "title": "可靠传输协议笔记",
+      "similarity": 0.503
+    },
+    {
+      "slug": "cdma-csma",
+      "title": "CDMA 与 CSMA 协议笔记",
+      "similarity": 0.49
+    },
+    {
+      "slug": "physical-datalink",
+      "title": "物理层与数据链路层笔记",
+      "similarity": 0.471
+    },
+    {
+      "slug": "junit",
+      "title": "JUnit 单元测试学习笔记",
       "similarity": 0.457
     },
     {
-      "slug": "theme-customization",
-      "title": "主题定制指南",
-      "similarity": 0.42
+      "slug": "git-usage-guide",
+      "title": "Git 使用指南",
+      "similarity": 0.454
+    }
+  ],
+  "reliable-transmission": [
+    {
+      "slug": "cdma-csma",
+      "title": "CDMA 与 CSMA 协议笔记",
+      "similarity": 0.547
+    },
+    {
+      "slug": "routing",
+      "title": "路由聚合与路由选择协议",
+      "similarity": 0.503
+    },
+    {
+      "slug": "physical-datalink",
+      "title": "物理层与数据链路层笔记",
+      "similarity": 0.469
+    },
+    {
+      "slug": "frontend-backend-separation",
+      "title": "前后端分离开发笔记",
+      "similarity": 0.412
+    },
+    {
+      "slug": "spring-transaction",
+      "title": "Spring 事务管理学习笔记",
+      "similarity": 0.404
+    }
+  ],
+  "physical-datalink": [
+    {
+      "slug": "osi-model",
+      "title": "计算机网络基础：OSI 模型与网络设备",
+      "similarity": 0.567
+    },
+    {
+      "slug": "computer-organization",
+      "title": "计算机组成原理笔记",
+      "similarity": 0.529
+    },
+    {
+      "slug": "spring-boot",
+      "title": "Spring Boot Web 基础学习笔记",
+      "similarity": 0.524
+    },
+    {
+      "slug": "html-basics",
+      "title": "HTML、CSS 基础与页面布局笔记",
+      "similarity": 0.508
+    },
+    {
+      "slug": "competition-basics",
+      "title": "编程基础：从输入输出到算法入门",
+      "similarity": 0.504
+    }
+  ],
+  "osi-model": [
+    {
+      "slug": "physical-datalink",
+      "title": "物理层与数据链路层笔记",
+      "similarity": 0.567
+    },
+    {
+      "slug": "computer-organization",
+      "title": "计算机组成原理笔记",
+      "similarity": 0.56
+    },
+    {
+      "slug": "html-basics",
+      "title": "HTML、CSS 基础与页面布局笔记",
+      "similarity": 0.468
+    },
+    {
+      "slug": "vlan-ipv4",
+      "title": "VLAN 与 IPv4 地址笔记",
+      "similarity": 0.449
+    },
+    {
+      "slug": "linear-model-basics",
+      "title": "李宏毅机器学习笔记：线性模型与梯度下降",
+      "similarity": 0.449
+    }
+  ],
+  "gfw-cdn-notes": [
+    {
+      "slug": "cloudflare-ip-edge-apps",
+      "title": "Cloudflare 边缘应用：一个 IP 承载数千网站",
+      "similarity": 0.59
+    },
+    {
+      "slug": "jwt-auth",
+      "title": "登录认证与 JWT 令牌笔记",
+      "similarity": 0.417
+    },
+    {
+      "slug": "intro-to-k8s",
+      "title": "初识 Kubernetes：从 Service 与 CoreDNS 理解服务发现",
+      "similarity": 0.403
+    },
+    {
+      "slug": "cdma-csma",
+      "title": "CDMA 与 CSMA 协议笔记",
+      "similarity": 0.394
+    },
+    {
+      "slug": "cli-practice-guide",
+      "title": "CLI Agent 实践指南：从 Claude Code 到通用方法论",
+      "similarity": 0.387
+    }
+  ],
+  "flclash-ssh-misroute": [
+    {
+      "slug": "vm-use-host-clash",
+      "title": "让手机连上热点直接使用主机的 Clash",
+      "similarity": 0.425
+    },
+    {
+      "slug": "vm-network-config",
+      "title": "虚拟机网络配置",
+      "similarity": 0.401
+    },
+    {
+      "slug": "vscode-ssh-docker",
+      "title": "VSCode + SSH + Docker 完整配置流程",
+      "similarity": 0.386
+    },
+    {
+      "slug": "cloudflare-ip-edge-apps",
+      "title": "Cloudflare 边缘应用：一个 IP 承载数千网站",
+      "similarity": 0.379
+    },
+    {
+      "slug": "reliable-transmission",
+      "title": "可靠传输协议笔记",
+      "similarity": 0.376
+    }
+  ],
+  "cloudflare-ip-edge-apps": [
+    {
+      "slug": "gfw-cdn-notes",
+      "title": "GFW 识别 CDN 相关笔记",
+      "similarity": 0.59
+    },
+    {
+      "slug": "osi-model",
+      "title": "计算机网络基础：OSI 模型与网络设备",
+      "similarity": 0.448
+    },
+    {
+      "slug": "campus-network-ip",
+      "title": "校园网 IP 切换原理",
+      "similarity": 0.437
+    },
+    {
+      "slug": "modularity-vite-npm",
+      "title": "现代前端基础：模块化、npm 与 Vite",
+      "similarity": 0.41
+    },
+    {
+      "slug": "vm-network-config",
+      "title": "虚拟机网络配置",
+      "similarity": 0.405
+    }
+  ],
+  "cdma-csma": [
+    {
+      "slug": "reliable-transmission",
+      "title": "可靠传输协议笔记",
+      "similarity": 0.547
+    },
+    {
+      "slug": "routing",
+      "title": "路由聚合与路由选择协议",
+      "similarity": 0.49
+    },
+    {
+      "slug": "physical-datalink",
+      "title": "物理层与数据链路层笔记",
+      "similarity": 0.472
+    },
+    {
+      "slug": "vlan-ipv4",
+      "title": "VLAN 与 IPv4 地址笔记",
+      "similarity": 0.408
+    },
+    {
+      "slug": "jwt-auth",
+      "title": "登录认证与 JWT 令牌笔记",
+      "similarity": 0.405
+    }
+  ],
+  "campus-network-ip": [
+    {
+      "slug": "osi-model",
+      "title": "计算机网络基础：OSI 模型与网络设备",
+      "similarity": 0.446
+    },
+    {
+      "slug": "cloudflare-ip-edge-apps",
+      "title": "Cloudflare 边缘应用：一个 IP 承载数千网站",
+      "similarity": 0.437
+    },
+    {
+      "slug": "vm-network-config",
+      "title": "虚拟机网络配置",
+      "similarity": 0.428
+    },
+    {
+      "slug": "vlan-ipv4",
+      "title": "VLAN 与 IPv4 地址笔记",
+      "similarity": 0.422
+    },
+    {
+      "slug": "routing",
+      "title": "路由聚合与路由选择协议",
+      "similarity": 0.415
+    }
+  ],
+  "binary-representation": [
+    {
+      "slug": "physical-datalink",
+      "title": "物理层与数据链路层笔记",
+      "similarity": 0.456
+    },
+    {
+      "slug": "queue-and-array",
+      "title": "链队列实现",
+      "similarity": 0.452
+    },
+    {
+      "slug": "trap-interrupt-syscall",
+      "title": "Trap、中断与系统调用详解",
+      "similarity": 0.432
+    },
+    {
+      "slug": "binary-tree",
+      "title": "二叉树基础笔记",
+      "similarity": 0.423
+    },
+    {
+      "slug": "frontend-backend-separation",
+      "title": "前后端分离开发笔记",
+      "similarity": 0.411
+    }
+  ],
+  "spring-transaction": [
+    {
+      "slug": "file-upload",
+      "title": "文件上传与异常处理",
+      "similarity": 0.565
+    },
+    {
+      "slug": "spring-boot",
+      "title": "Spring Boot Web 基础学习笔记",
+      "similarity": 0.562
+    },
+    {
+      "slug": "maven",
+      "title": "Maven 项目构建与依赖管理笔记",
+      "similarity": 0.536
+    },
+    {
+      "slug": "junit",
+      "title": "JUnit 单元测试学习笔记",
+      "similarity": 0.506
+    },
+    {
+      "slug": "jwt-auth",
+      "title": "登录认证与 JWT 令牌笔记",
+      "similarity": 0.483
+    }
+  ],
+  "spring-boot": [
+    {
+      "slug": "file-upload",
+      "title": "文件上传与异常处理",
+      "similarity": 0.655
+    },
+    {
+      "slug": "junit",
+      "title": "JUnit 单元测试学习笔记",
+      "similarity": 0.593
+    },
+    {
+      "slug": "html-basics",
+      "title": "HTML、CSS 基础与页面布局笔记",
+      "similarity": 0.593
+    },
+    {
+      "slug": "logback",
+      "title": "Logback 日志框架入门笔记",
+      "similarity": 0.574
+    },
+    {
+      "slug": "spring-transaction",
+      "title": "Spring 事务管理学习笔记",
+      "similarity": 0.562
+    }
+  ],
+  "restful-crud": [
+    {
+      "slug": "spring-boot",
+      "title": "Spring Boot Web 基础学习笔记",
+      "similarity": 0.526
+    },
+    {
+      "slug": "file-upload",
+      "title": "文件上传与异常处理",
+      "similarity": 0.501
+    },
+    {
+      "slug": "vue-basics",
+      "title": "Vue 基础语法与数据驱动视图笔记",
+      "similarity": 0.463
+    },
+    {
+      "slug": "codex-best-practices",
+      "title": "如何使用好Codex等ai工具",
+      "similarity": 0.458
+    },
+    {
+      "slug": "jdbc-mybatis",
+      "title": "JDBC 与 MyBatis 入门笔记",
+      "similarity": 0.457
+    }
+  ],
+  "mysql": [
+    {
+      "slug": "mysql-relations",
+      "title": "数据库多表关系与 MyBatis 查询笔记",
+      "similarity": 0.637
+    },
+    {
+      "slug": "js-basics",
+      "title": "JavaScript 基础语法笔记",
+      "similarity": 0.606
+    },
+    {
+      "slug": "linked-list",
+      "title": "链表基础与 LeetCode 练习",
+      "similarity": 0.583
+    },
+    {
+      "slug": "html-basics",
+      "title": "HTML、CSS 基础与页面布局笔记",
+      "similarity": 0.575
+    },
+    {
+      "slug": "bfs-ai-optimized",
+      "title": "常用算法笔记：BFS、贪心、前缀和与差分",
+      "similarity": 0.547
+    }
+  ],
+  "mysql-relations": [
+    {
+      "slug": "mysql",
+      "title": "MySQL 基础与 SQL 语句笔记",
+      "similarity": 0.637
+    },
+    {
+      "slug": "jdbc-mybatis",
+      "title": "JDBC 与 MyBatis 入门笔记",
+      "similarity": 0.567
+    },
+    {
+      "slug": "linked-list",
+      "title": "链表基础与 LeetCode 练习",
+      "similarity": 0.531
+    },
+    {
+      "slug": "binary-tree",
+      "title": "二叉树基础笔记",
+      "similarity": 0.508
+    },
+    {
+      "slug": "bfs-ai-optimized",
+      "title": "常用算法笔记：BFS、贪心、前缀和与差分",
+      "similarity": 0.501
+    }
+  ],
+  "maven": [
+    {
+      "slug": "spring-transaction",
+      "title": "Spring 事务管理学习笔记",
+      "similarity": 0.536
+    },
+    {
+      "slug": "git-usage-guide",
+      "title": "Git 使用指南",
+      "similarity": 0.508
+    },
+    {
+      "slug": "vue-element-plus",
+      "title": "Vue 工程化与 Element Plus 实战笔记",
+      "similarity": 0.499
+    },
+    {
+      "slug": "logback",
+      "title": "Logback 日志框架入门笔记",
+      "similarity": 0.496
+    },
+    {
+      "slug": "html-basics",
+      "title": "HTML、CSS 基础与页面布局笔记",
+      "similarity": 0.496
+    }
+  ],
+  "logback": [
+    {
+      "slug": "spring-boot",
+      "title": "Spring Boot Web 基础学习笔记",
+      "similarity": 0.574
+    },
+    {
+      "slug": "jdbc-mybatis",
+      "title": "JDBC 与 MyBatis 入门笔记",
+      "similarity": 0.569
+    },
+    {
+      "slug": "junit",
+      "title": "JUnit 单元测试学习笔记",
+      "similarity": 0.543
+    },
+    {
+      "slug": "git-usage-guide",
+      "title": "Git 使用指南",
+      "similarity": 0.522
+    },
+    {
+      "slug": "html-basics",
+      "title": "HTML、CSS 基础与页面布局笔记",
+      "similarity": 0.52
+    }
+  ],
+  "jwt-auth": [
+    {
+      "slug": "junit",
+      "title": "JUnit 单元测试学习笔记",
+      "similarity": 0.595
+    },
+    {
+      "slug": "spring-boot",
+      "title": "Spring Boot Web 基础学习笔记",
+      "similarity": 0.534
+    },
+    {
+      "slug": "js-basics",
+      "title": "JavaScript 基础语法笔记",
+      "similarity": 0.531
+    },
+    {
+      "slug": "logback",
+      "title": "Logback 日志框架入门笔记",
+      "similarity": 0.517
+    },
+    {
+      "slug": "git-usage-guide",
+      "title": "Git 使用指南",
+      "similarity": 0.512
+    }
+  ],
+  "junit": [
+    {
+      "slug": "jwt-auth",
+      "title": "登录认证与 JWT 令牌笔记",
+      "similarity": 0.595
+    },
+    {
+      "slug": "jdbc-mybatis",
+      "title": "JDBC 与 MyBatis 入门笔记",
+      "similarity": 0.595
+    },
+    {
+      "slug": "spring-boot",
+      "title": "Spring Boot Web 基础学习笔记",
+      "similarity": 0.593
+    },
+    {
+      "slug": "js-basics",
+      "title": "JavaScript 基础语法笔记",
+      "similarity": 0.59
+    },
+    {
+      "slug": "js-events",
+      "title": "JavaScript 事件监听笔记",
+      "similarity": 0.561
+    }
+  ],
+  "jdbc-mybatis": [
+    {
+      "slug": "junit",
+      "title": "JUnit 单元测试学习笔记",
+      "similarity": 0.595
+    },
+    {
+      "slug": "logback",
+      "title": "Logback 日志框架入门笔记",
+      "similarity": 0.569
+    },
+    {
+      "slug": "mysql-relations",
+      "title": "数据库多表关系与 MyBatis 查询笔记",
+      "similarity": 0.567
+    },
+    {
+      "slug": "spring-boot",
+      "title": "Spring Boot Web 基础学习笔记",
+      "similarity": 0.559
+    },
+    {
+      "slug": "mysql",
+      "title": "MySQL 基础与 SQL 语句笔记",
+      "similarity": 0.518
+    }
+  ],
+  "file-upload": [
+    {
+      "slug": "spring-boot",
+      "title": "Spring Boot Web 基础学习笔记",
+      "similarity": 0.655
+    },
+    {
+      "slug": "spring-transaction",
+      "title": "Spring 事务管理学习笔记",
+      "similarity": 0.565
+    },
+    {
+      "slug": "restful-crud",
+      "title": "RESTful、Apifox 与 CRUD 接口实践",
+      "similarity": 0.501
+    },
+    {
+      "slug": "maven",
+      "title": "Maven 项目构建与依赖管理笔记",
+      "similarity": 0.488
+    },
+    {
+      "slug": "html-basics",
+      "title": "HTML、CSS 基础与页面布局笔记",
+      "similarity": 0.487
+    }
+  ],
+  "vue-q-and-a": [
+    {
+      "slug": "vue-basics",
+      "title": "Vue 基础语法与数据驱动视图笔记",
+      "similarity": 0.589
+    },
+    {
+      "slug": "js-events",
+      "title": "JavaScript 事件监听笔记",
+      "similarity": 0.531
+    },
+    {
+      "slug": "js-basics",
+      "title": "JavaScript 基础语法笔记",
+      "similarity": 0.518
+    },
+    {
+      "slug": "vue-element-plus",
+      "title": "Vue 工程化与 Element Plus 实战笔记",
+      "similarity": 0.502
+    },
+    {
+      "slug": "cpp-knowledge-points",
+      "title": "C++ 知识点",
+      "similarity": 0.5
+    }
+  ],
+  "vue-element-plus": [
+    {
+      "slug": "vue-basics",
+      "title": "Vue 基础语法与数据驱动视图笔记",
+      "similarity": 0.608
+    },
+    {
+      "slug": "modularity-vite-npm",
+      "title": "现代前端基础：模块化、npm 与 Vite",
+      "similarity": 0.55
+    },
+    {
+      "slug": "vue-q-and-a",
+      "title": "Vue.js 常见问题速查",
+      "similarity": 0.502
+    },
+    {
+      "slug": "maven",
+      "title": "Maven 项目构建与依赖管理笔记",
+      "similarity": 0.499
+    },
+    {
+      "slug": "html-basics",
+      "title": "HTML、CSS 基础与页面布局笔记",
+      "similarity": 0.474
+    }
+  ],
+  "vue-basics": [
+    {
+      "slug": "vanilla-data-driven-ui",
+      "title": "现代前端基础：Vanilla 与数据驱动 UI",
+      "similarity": 0.61
+    },
+    {
+      "slug": "vue-element-plus",
+      "title": "Vue 工程化与 Element Plus 实战笔记",
+      "similarity": 0.608
+    },
+    {
+      "slug": "vue-q-and-a",
+      "title": "Vue.js 常见问题速查",
+      "similarity": 0.589
+    },
+    {
+      "slug": "js-basics",
+      "title": "JavaScript 基础语法笔记",
+      "similarity": 0.587
+    },
+    {
+      "slug": "html-basics",
+      "title": "HTML、CSS 基础与页面布局笔记",
+      "similarity": 0.545
+    }
+  ],
+  "vanilla-data-driven-ui": [
+    {
+      "slug": "vue-basics",
+      "title": "Vue 基础语法与数据驱动视图笔记",
+      "similarity": 0.61
+    },
+    {
+      "slug": "modularity-vite-npm",
+      "title": "现代前端基础：模块化、npm 与 Vite",
+      "similarity": 0.529
+    },
+    {
+      "slug": "jdbc-mybatis",
+      "title": "JDBC 与 MyBatis 入门笔记",
+      "similarity": 0.487
+    },
+    {
+      "slug": "restful-crud",
+      "title": "RESTful、Apifox 与 CRUD 接口实践",
+      "similarity": 0.436
+    },
+    {
+      "slug": "spring-boot",
+      "title": "Spring Boot Web 基础学习笔记",
+      "similarity": 0.423
+    }
+  ],
+  "modularity-vite-npm": [
+    {
+      "slug": "vue-element-plus",
+      "title": "Vue 工程化与 Element Plus 实战笔记",
+      "similarity": 0.55
+    },
+    {
+      "slug": "vue-basics",
+      "title": "Vue 基础语法与数据驱动视图笔记",
+      "similarity": 0.543
+    },
+    {
+      "slug": "vanilla-data-driven-ui",
+      "title": "现代前端基础：Vanilla 与数据驱动 UI",
+      "similarity": 0.529
+    },
+    {
+      "slug": "html-basics",
+      "title": "HTML、CSS 基础与页面布局笔记",
+      "similarity": 0.505
+    },
+    {
+      "slug": "frontend-backend-separation",
+      "title": "前后端分离开发笔记",
+      "similarity": 0.493
+    }
+  ],
+  "js-events": [
+    {
+      "slug": "js-basics",
+      "title": "JavaScript 基础语法笔记",
+      "similarity": 0.592
+    },
+    {
+      "slug": "junit",
+      "title": "JUnit 单元测试学习笔记",
+      "similarity": 0.561
+    },
+    {
+      "slug": "html-basics",
+      "title": "HTML、CSS 基础与页面布局笔记",
+      "similarity": 0.546
+    },
+    {
+      "slug": "vue-q-and-a",
+      "title": "Vue.js 常见问题速查",
+      "similarity": 0.531
+    },
+    {
+      "slug": "spring-boot",
+      "title": "Spring Boot Web 基础学习笔记",
+      "similarity": 0.503
+    }
+  ],
+  "js-basics": [
+    {
+      "slug": "competition-basics",
+      "title": "编程基础：从输入输出到算法入门",
+      "similarity": 0.635
+    },
+    {
+      "slug": "html-basics",
+      "title": "HTML、CSS 基础与页面布局笔记",
+      "similarity": 0.634
+    },
+    {
+      "slug": "mysql",
+      "title": "MySQL 基础与 SQL 语句笔记",
+      "similarity": 0.606
+    },
+    {
+      "slug": "js-events",
+      "title": "JavaScript 事件监听笔记",
+      "similarity": 0.592
+    },
+    {
+      "slug": "junit",
+      "title": "JUnit 单元测试学习笔记",
+      "similarity": 0.59
+    }
+  ],
+  "html-basics": [
+    {
+      "slug": "js-basics",
+      "title": "JavaScript 基础语法笔记",
+      "similarity": 0.634
+    },
+    {
+      "slug": "spring-boot",
+      "title": "Spring Boot Web 基础学习笔记",
+      "similarity": 0.593
+    },
+    {
+      "slug": "mysql",
+      "title": "MySQL 基础与 SQL 语句笔记",
+      "similarity": 0.575
+    },
+    {
+      "slug": "junit",
+      "title": "JUnit 单元测试学习笔记",
+      "similarity": 0.547
+    },
+    {
+      "slug": "js-events",
+      "title": "JavaScript 事件监听笔记",
+      "similarity": 0.546
+    }
+  ],
+  "frontend-backend-separation": [
+    {
+      "slug": "modularity-vite-npm",
+      "title": "现代前端基础：模块化、npm 与 Vite",
+      "similarity": 0.493
+    },
+    {
+      "slug": "vue-basics",
+      "title": "Vue 基础语法与数据驱动视图笔记",
+      "similarity": 0.48
+    },
+    {
+      "slug": "spring-boot",
+      "title": "Spring Boot Web 基础学习笔记",
+      "similarity": 0.444
+    },
+    {
+      "slug": "vue-element-plus",
+      "title": "Vue 工程化与 Element Plus 实战笔记",
+      "similarity": 0.439
+    },
+    {
+      "slug": "restful-crud",
+      "title": "RESTful、Apifox 与 CRUD 接口实践",
+      "similarity": 0.438
+    }
+  ],
+  "trap-interrupt-syscall": [
+    {
+      "slug": "binary-representation",
+      "title": "二进制表示与数制转换",
+      "similarity": 0.432
+    },
+    {
+      "slug": "queue-and-array",
+      "title": "链队列实现",
+      "similarity": 0.387
+    },
+    {
+      "slug": "competition-basics",
+      "title": "编程基础：从输入输出到算法入门",
+      "similarity": 0.387
+    },
+    {
+      "slug": "binary-tree",
+      "title": "二叉树基础笔记",
+      "similarity": 0.382
+    },
+    {
+      "slug": "intro-to-k8s",
+      "title": "初识 Kubernetes：从 Service 与 CoreDNS 理解服务发现",
+      "similarity": 0.381
+    }
+  ],
+  "queue-and-array": [
+    {
+      "slug": "linked-list",
+      "title": "链表基础与 LeetCode 练习",
+      "similarity": 0.539
+    },
+    {
+      "slug": "binary-tree",
+      "title": "二叉树基础笔记",
+      "similarity": 0.539
+    },
+    {
+      "slug": "physical-datalink",
+      "title": "物理层与数据链路层笔记",
+      "similarity": 0.503
+    },
+    {
+      "slug": "competition-basics",
+      "title": "编程基础：从输入输出到算法入门",
+      "similarity": 0.5
+    },
+    {
+      "slug": "vue-basics",
+      "title": "Vue 基础语法与数据驱动视图笔记",
+      "similarity": 0.472
+    }
+  ],
+  "linked-list": [
+    {
+      "slug": "binary-tree",
+      "title": "二叉树基础笔记",
+      "similarity": 0.601
+    },
+    {
+      "slug": "mysql",
+      "title": "MySQL 基础与 SQL 语句笔记",
+      "similarity": 0.583
+    },
+    {
+      "slug": "competition-basics",
+      "title": "编程基础：从输入输出到算法入门",
+      "similarity": 0.577
+    },
+    {
+      "slug": "queue-and-array",
+      "title": "链队列实现",
+      "similarity": 0.539
+    },
+    {
+      "slug": "html-basics",
+      "title": "HTML、CSS 基础与页面布局笔记",
+      "similarity": 0.536
+    }
+  ],
+  "cpp-knowledge-points": [
+    {
+      "slug": "bfs-ai-optimized",
+      "title": "常用算法笔记：BFS、贪心、前缀和与差分",
+      "similarity": 0.519
+    },
+    {
+      "slug": "vue-q-and-a",
+      "title": "Vue.js 常见问题速查",
+      "similarity": 0.5
+    },
+    {
+      "slug": "word-layout",
+      "title": "Word 排版技巧",
+      "similarity": 0.49
+    },
+    {
+      "slug": "git-usage-guide",
+      "title": "Git 使用指南",
+      "similarity": 0.49
+    },
+    {
+      "slug": "junit",
+      "title": "JUnit 单元测试学习笔记",
+      "similarity": 0.481
+    }
+  ],
+  "computer-organization": [
+    {
+      "slug": "competition-basics",
+      "title": "编程基础：从输入输出到算法入门",
+      "similarity": 0.563
+    },
+    {
+      "slug": "osi-model",
+      "title": "计算机网络基础：OSI 模型与网络设备",
+      "similarity": 0.56
+    },
+    {
+      "slug": "physical-datalink",
+      "title": "物理层与数据链路层笔记",
+      "similarity": 0.529
+    },
+    {
+      "slug": "iris-knn",
+      "title": "机器学习入门：从 ML 概述到 KNN 分类",
+      "similarity": 0.505
+    },
+    {
+      "slug": "binary-tree",
+      "title": "二叉树基础笔记",
+      "similarity": 0.495
+    }
+  ],
+  "competition-basics": [
+    {
+      "slug": "js-basics",
+      "title": "JavaScript 基础语法笔记",
+      "similarity": 0.635
+    },
+    {
+      "slug": "linked-list",
+      "title": "链表基础与 LeetCode 练习",
+      "similarity": 0.577
+    },
+    {
+      "slug": "computer-organization",
+      "title": "计算机组成原理笔记",
+      "similarity": 0.563
+    },
+    {
+      "slug": "iris-knn",
+      "title": "机器学习入门：从 ML 概述到 KNN 分类",
+      "similarity": 0.55
+    },
+    {
+      "slug": "mysql",
+      "title": "MySQL 基础与 SQL 语句笔记",
+      "similarity": 0.543
+    }
+  ],
+  "binary-tree": [
+    {
+      "slug": "linked-list",
+      "title": "链表基础与 LeetCode 练习",
+      "similarity": 0.601
+    },
+    {
+      "slug": "queue-and-array",
+      "title": "链队列实现",
+      "similarity": 0.539
+    },
+    {
+      "slug": "mysql",
+      "title": "MySQL 基础与 SQL 语句笔记",
+      "similarity": 0.537
+    },
+    {
+      "slug": "bfs-ai-optimized",
+      "title": "常用算法笔记：BFS、贪心、前缀和与差分",
+      "similarity": 0.528
+    },
+    {
+      "slug": "mysql-relations",
+      "title": "数据库多表关系与 MyBatis 查询笔记",
+      "similarity": 0.508
+    }
+  ],
+  "bfs-ai-optimized": [
+    {
+      "slug": "mysql",
+      "title": "MySQL 基础与 SQL 语句笔记",
+      "similarity": 0.547
+    },
+    {
+      "slug": "html-basics",
+      "title": "HTML、CSS 基础与页面布局笔记",
+      "similarity": 0.532
+    },
+    {
+      "slug": "binary-tree",
+      "title": "二叉树基础笔记",
+      "similarity": 0.528
+    },
+    {
+      "slug": "cpp-knowledge-points",
+      "title": "C++ 知识点",
+      "similarity": 0.519
+    },
+    {
+      "slug": "linked-list",
+      "title": "链表基础与 LeetCode 练习",
+      "similarity": 0.504
+    }
+  ],
+  "linear-model-basics": [
+    {
+      "slug": "iris-knn",
+      "title": "机器学习入门：从 ML 概述到 KNN 分类",
+      "similarity": 0.514
+    },
+    {
+      "slug": "physical-datalink",
+      "title": "物理层与数据链路层笔记",
+      "similarity": 0.473
+    },
+    {
+      "slug": "osi-model",
+      "title": "计算机网络基础：OSI 模型与网络设备",
+      "similarity": 0.449
+    },
+    {
+      "slug": "competition-basics",
+      "title": "编程基础：从输入输出到算法入门",
+      "similarity": 0.419
+    },
+    {
+      "slug": "linked-list",
+      "title": "链表基础与 LeetCode 练习",
+      "similarity": 0.416
+    }
+  ],
+  "iris-knn": [
+    {
+      "slug": "competition-basics",
+      "title": "编程基础：从输入输出到算法入门",
+      "similarity": 0.55
+    },
+    {
+      "slug": "linked-list",
+      "title": "链表基础与 LeetCode 练习",
+      "similarity": 0.52
+    },
+    {
+      "slug": "linear-model-basics",
+      "title": "李宏毅机器学习笔记：线性模型与梯度下降",
+      "similarity": 0.514
+    },
+    {
+      "slug": "computer-organization",
+      "title": "计算机组成原理笔记",
+      "similarity": 0.505
+    },
+    {
+      "slug": "spring-boot",
+      "title": "Spring Boot Web 基础学习笔记",
+      "similarity": 0.488
     }
   ]
 }
