@@ -35,4 +35,4 @@ Do not commit secrets from `.env`. Restart the dev server after changing `config
 
 ## Deployment
 
-Production deployment follows `docs/deploy.md` exactly (push main → CI builds GHCR image → server `az` pulls and recreates). Agents must read that SOP before deploying and follow it step by step; do not improvise or guess the server topology.
+Production deployment is automated in `.github/workflows/docker-image.yml` (build-push job, then a deploy job that SSHes into server `az`, recreates the container, health-gates, and auto-rolls back). Agents must read `docs/deploy.md` before deploying and follow it step by step; do not improvise or guess the server topology.
