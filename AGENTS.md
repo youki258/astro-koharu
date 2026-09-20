@@ -32,3 +32,7 @@ Recent history favors short imperative subjects and Conventional Commit prefixes
 ## Configuration & Generated Data
 
 Do not commit secrets from `.env`. Restart the dev server after changing `config/site.yaml`. Preserve the tracked `.cache/og-data.json`; it is an intentional build cache, unlike other ignored cache artifacts.
+
+## Deployment
+
+Production deployment follows `docs/deploy.md` exactly (push main → CI builds GHCR image → server `az` pulls and recreates). Agents must read that SOP before deploying and follow it step by step; do not improvise or guess the server topology.
