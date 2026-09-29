@@ -87,19 +87,19 @@ categoryMap:
 featuredCategories:
   - link: note/network
     label: 网络与架构
-    image: /img/cover/7.webp
+    image: /img/cover-mine/c32.webp
     description: 网络协议
   - link: note/java
     label: Java 全栈
-    image: /img/cover/2.webp
+    image: /img/cover-mine/c45.webp
     description: 后端开发
   - link: note/front-end
     label: 前端
-    image: /img/cover/1.webp
+    image: /img/cover-mine/c29.webp
     description: Web 前端
   - link: note/cs
     label: 计算机基础
-    image: /img/cover/4.webp
+    image: /img/cover-mine/c15.webp
     description: CS 基础
 
 # =============================================================================
@@ -126,7 +126,7 @@ featuredSeries:
     fullName: 我的技术周刊 # 完整名称
     description: | # 支持多行 Markdown
       定期更新的系列内容。
-    cover: /img/weekly_header.webp # 系列页面头图
+    cover: /img/banner/banner-1920.webp # 系列页面头图（weekly 已停用，仅占位）
     enabled: false # 启用此系列
     icon: ri:newspaper-line # 导航图标
   # 示例：添加第二个系列（取消注释启用）
@@ -270,13 +270,76 @@ announcements:
 # =============================================================================
 # Default Cover List
 # 默认封面列表 - 文章没有指定封面时将随机从列表中选择一张作为封面
-# 不设置则使用内置的 21 张默认封面 (/img/cover/1~21.webp)
+# 已配置自定义封面池 /img/cover-mine/c01~c67.webp（BUILT_IN_COVERS 兜底同源）
 # =============================================================================
-# defaultCoverList:
-#   - /img/cover/1.webp
-#   - https://example.com/custom-cover.webp
-
-
+defaultCoverList:
+  - /img/cover-mine/c01.webp
+  - /img/cover-mine/c02.webp
+  - /img/cover-mine/c03.webp
+  - /img/cover-mine/c04.webp
+  - /img/cover-mine/c05.webp
+  - /img/cover-mine/c06.webp
+  - /img/cover-mine/c07.webp
+  - /img/cover-mine/c08.webp
+  - /img/cover-mine/c09.webp
+  - /img/cover-mine/c10.webp
+  - /img/cover-mine/c11.webp
+  - /img/cover-mine/c12.webp
+  - /img/cover-mine/c13.webp
+  - /img/cover-mine/c14.webp
+  - /img/cover-mine/c15.webp
+  - /img/cover-mine/c16.webp
+  - /img/cover-mine/c17.webp
+  - /img/cover-mine/c18.webp
+  - /img/cover-mine/c19.webp
+  - /img/cover-mine/c20.webp
+  - /img/cover-mine/c21.webp
+  - /img/cover-mine/c22.webp
+  - /img/cover-mine/c23.webp
+  - /img/cover-mine/c24.webp
+  - /img/cover-mine/c25.webp
+  - /img/cover-mine/c26.webp
+  - /img/cover-mine/c27.webp
+  - /img/cover-mine/c28.webp
+  - /img/cover-mine/c29.webp
+  - /img/cover-mine/c30.webp
+  - /img/cover-mine/c31.webp
+  - /img/cover-mine/c32.webp
+  - /img/cover-mine/c33.webp
+  - /img/cover-mine/c34.webp
+  - /img/cover-mine/c35.webp
+  - /img/cover-mine/c36.webp
+  - /img/cover-mine/c37.webp
+  - /img/cover-mine/c38.webp
+  - /img/cover-mine/c39.webp
+  - /img/cover-mine/c40.webp
+  - /img/cover-mine/c41.webp
+  - /img/cover-mine/c42.webp
+  - /img/cover-mine/c43.webp
+  - /img/cover-mine/c44.webp
+  - /img/cover-mine/c45.webp
+  - /img/cover-mine/c46.webp
+  - /img/cover-mine/c47.webp
+  - /img/cover-mine/c48.webp
+  - /img/cover-mine/c49.webp
+  - /img/cover-mine/c50.webp
+  - /img/cover-mine/c51.webp
+  - /img/cover-mine/c52.webp
+  - /img/cover-mine/c53.webp
+  - /img/cover-mine/c54.webp
+  - /img/cover-mine/c55.webp
+  - /img/cover-mine/c56.webp
+  - /img/cover-mine/c57.webp
+  - /img/cover-mine/c58.webp
+  - /img/cover-mine/c59.webp
+  - /img/cover-mine/c60.webp
+  - /img/cover-mine/c61.webp
+  - /img/cover-mine/c62.webp
+  - /img/cover-mine/c63.webp
+  - /img/cover-mine/c64.webp
+  - /img/cover-mine/c65.webp
+  - /img/cover-mine/c66.webp
+  - /img/cover-mine/c67.webp
 # =============================================================================
 # Content Processing Options
 # 内容处理选项 - 控制文章渲染和交互行为

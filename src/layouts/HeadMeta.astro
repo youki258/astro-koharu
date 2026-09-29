@@ -39,18 +39,9 @@ const hreflangLinks = showLocaleAlternates
 <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
 <link rel="apple-touch-icon" href="/favicon-192.png" />
 <meta name="generator" content={Astro.generator} />
-{/* Async load rounded fonts — Japanese pages use Gen Jyuu Gothic P, others use ChillRoundF (fix #113) */}
-{locale === 'ja' ? (
-  <>
-    <link rel="stylesheet" href="/fonts/GenJyuuGothic-P-Regular/result.css" media="print" onload="this.setAttribute('media','all')" />
-    <link rel="stylesheet" href="/fonts/GenJyuuGothic-P-Bold/result.css" media="print" onload="this.setAttribute('media','all')" />
-  </>
-) : (
-  <>
-    <link rel="stylesheet" href="/fonts/ChillRoundFRegular/result.css" media="print" onload="this.setAttribute('media','all')" />
-    <link rel="stylesheet" href="/fonts/ChillRoundFBold/result.css" media="print" onload="this.setAttribute('media','all')" />
-  </>
-)}
+<!-- Async load rounded fonts — others use ChillRoundF (fix #113); ja 已禁用，GenJyuuGothic 已移除 -->
+<link rel="stylesheet" href="/fonts/ChillRoundFRegular/result.css" media="print" onload="this.setAttribute('media','all')" />
+<link rel="stylesheet" href="/fonts/ChillRoundFBold/result.css" media="print" onload="this.setAttribute('media','all')" />
 
 <!-- SEO 元数据由 astro-seo 管理 -->
 <SEO

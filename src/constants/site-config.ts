@@ -51,7 +51,7 @@ export const seoConfig = {
   url: siteConfig.site,
 };
 
-const BUILT_IN_COVERS = Array.from({ length: 21 }, (_, i) => `/img/cover/${i + 1}.webp`);
+const BUILT_IN_COVERS = Array.from({ length: 67 }, (_, i) => `/img/cover-mine/c${String(i + 1).padStart(2, '0')}.webp`);
 export const defaultCoverList = yamlConfig?.defaultCoverList?.length ? yamlConfig.defaultCoverList : BUILT_IN_COVERS;
 
 // Map YAML comment config
