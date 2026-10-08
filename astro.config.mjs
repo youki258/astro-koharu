@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { createRequire } from 'node:module';
 import path from 'node:path';
 import { unified } from '@astrojs/markdown-remark';
 import node from '@astrojs/node';
@@ -20,11 +21,15 @@ import Sonda from 'sonda/vite';
 import { loadEnv } from 'vite';
 import svgr from 'vite-plugin-svgr';
 import YAML from 'yaml';
+import { editorIntegration } from './src/features/editor/integration.ts';
 import { momentsRoutes } from './src/features/moments/integration/momentsRoutes.ts';
 import { normalizeContentConfig } from './src/lib/config/content.ts';
+import { normalizeEditorConfig } from './src/lib/config/editor.ts';
 import { enabledFeaturedSeriesSlugs, normalizeFeaturedSeries } from './src/lib/config/featured-series.ts';
+import { BUNDLED_ICON_SETS } from './src/lib/config/icon-sets.ts';
 import { normalizeMomentsConfig } from './src/lib/config/moments.ts';
 import { RESERVED_ROUTES } from './src/lib/config/reserved-routes.ts';
+import { mermaidThemeCSS } from './src/lib/markdown/mermaid-theme.ts';
 import { rehypeEncryptedBlock } from './src/lib/markdown/rehype-encrypted-block.ts';
 import { rehypeEncryptedPost } from './src/lib/markdown/rehype-encrypted-post.ts';
 import { rehypeImagePlaceholder } from './src/lib/markdown/rehype-image-placeholder.ts';
@@ -37,6 +42,7 @@ import { remarkShokaRuby } from './src/lib/markdown/remark-shoka-ruby.ts';
 import { remarkShokaSpoiler } from './src/lib/markdown/remark-shoka-spoiler.ts';
 import { collapsibleCodeTransformer } from './src/lib/markdown/shiki-collapsible-transformer.ts';
 import { shokaMetaTransformer } from './src/lib/markdown/shiki-meta-transformer.ts';
+import { SHIKI_THEMES } from './src/lib/markdown/shiki-themes.ts';
 
 // Load YAML config directly with Node.js (before Vite plugins are available)
 // This is only used in astro.config.mjs - other files use @rollup/plugin-yaml
@@ -47,6 +53,7 @@ function loadConfigForAstro() {
 }
 
 const yamlConfig = loadConfigForAstro();
+const editorConfig = normalizeEditorConfig(yamlConfig.editor);
 
 // Bundle analysis mode: ANALYZE=true pnpm build
 // Use loadEnv to read .env file (astro.config.mjs runs before Vite loads .env)
@@ -134,6 +141,13 @@ function conditionalSnowfall() {
 
 // Build conditional plugin lists based on content config
 const contentConfig = normalizeContentConfig(yamlConfig.content);
+
+// KaTeX's browser parser needs DOMParser; its official worker/default entry uses the same DOM-free parser as builds.
+const configRequire = createRequire(import.meta.url);
+const katexRequire = createRequire(configRequire.resolve('rehype-katex'));
+const katexHtmlParser = katexRequire.resolve('hast-util-from-html-isomorphic');
+const markdownRequire = createRequire(configRequire.resolve('remark-parse'));
+const markdownEntities = markdownRequire.resolve('decode-named-character-reference');
 
 // Remark plugins — order matters
 // remarkShokaPreprocess MUST be first: it re-parses raw text to fix GFM/remark conflicts
@@ -223,27 +237,21 @@ export default defineConfig({
       excludeLangs: ['mermaid'],
     },
     shikiConfig: {
-      themes: {
-        light: 'github-light',
-        dark: 'github-dark',
-      },
+      themes: SHIKI_THEMES,
       transformers: shikiTransformers,
     },
   },
   integrations: [
+    ...(editorConfig.enabled ? [editorIntegration()] : []),
     react(),
     sitemap(),
     icon({
-      include: {
-        gg: ['*'],
-        'fa6-regular': ['*'],
-        'fa6-solid': ['*'],
-        ri: ['*'],
-      },
+      include: Object.fromEntries(BUNDLED_ICON_SETS.map((set) => [set, ['*']])),
     }),
     pagefind(),
     mermaid({
       autoTheme: true,
+      mermaidConfig: { themeCSS: mermaidThemeCSS },
     }),
     robotsTxt(robotsConfig || {}),
     ...(momentsConfig.enabled ? [momentsRoutes(momentsConfig)] : []),
@@ -258,6 +266,7 @@ export default defineConfig({
     enabled: true,
   },
   vite: {
+    worker: { format: 'es' },
     build: {
       // Enable sourcemap for Sonda bundle analysis
       sourcemap: isAnalyze,
@@ -268,6 +277,10 @@ export default defineConfig({
     },
     plugins: [...(isAnalyze ? [Sonda({ open: false })] : []), yaml(), conditionalSnowfall(), svgr(), tailwindcss()],
     resolve: {
+      alias: {
+        'hast-util-from-html-isomorphic': katexHtmlParser,
+        'decode-named-character-reference': markdownEntities,
+      },
       noExternal: ['react-tweet'],
     },
     optimizeDeps: {
@@ -294,7 +307,8 @@ export default defineConfig({
   }),
   prefetch: {
     prefetchAll: true,
-    defaultStrategy: 'viewport',
+    // Visible-link prefetch competes with the current page's cold load.
+    defaultStrategy: 'hover',
   },
   trailingSlash: 'ignore',
 });

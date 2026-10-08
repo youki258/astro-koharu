@@ -7,6 +7,29 @@
 import type { UIStrings } from '../types';
 
 export const uiStrings: UIStrings = {
+  // Index pages
+  'index.posts': '件の投稿',
+  'index.years': '年',
+  'index.categories': '件のカテゴリー',
+  'index.tags': '個のタグ',
+  'index.mostUsed': '最多のタグ',
+  'category.filter': 'サブカテゴリー',
+  'colophon.seal': '奥付',
+  'colophon.filter': '奥付マークで絞り込む',
+  'tag.filter': 'タグを絞り込む',
+  'tag.filterPlaceholder': 'タグ名を入力',
+  'tag.noMatches': '一致するタグがありません',
+  'tag.singleTags': '1回だけ使われたタグがあと{count}個',
+  'archives.jumpToYear': '{year}年へ移動',
+  'archives.legendFew': '少ない',
+  'archives.legendMany': '多い',
+  'archives.calendar': '投稿カレンダー',
+  'archives.monthLabel': '{year}年{month}月 · {count}件の投稿',
+  'friends.countUnit': '人の友達',
+  'friends.emptyTitle': '友達リンクはまだありません',
+  'friends.emptyDesc': 'あなたのサイトを紹介して、最初の友達になりませんか。',
+  'moments.messageActions': 'メッセージの操作',
+
   // ── ナビゲーション ──────────────────────────────────────────────
   'nav.home': 'ホーム',
   'nav.posts': '投稿',
@@ -22,6 +45,8 @@ export const uiStrings: UIStrings = {
   // ── 一般 ──────────────────────────────────────────────────
   'common.search': '検索',
   'common.close': '閉じる',
+  'viewer.loadError': 'ビューアを読み込めませんでした。ページを再読み込みしてお試しください。',
+  'search.loadError': '検索を読み込めませんでした。ページを再読み込みしてお試しください。',
   'common.copy': 'コピー',
   'common.copied': 'コピーしました',
   'common.copyFailed': '自動コピーに失敗しました。リンクを手動でコピーしてください。',
@@ -55,6 +80,14 @@ export const uiStrings: UIStrings = {
   'post.seriesPrev': '前へ',
   'post.seriesNext': '次へ',
   'post.fallbackNotice': 'この投稿は「{lang}」では表示できません。元の投稿を表示しています。',
+  'post.markdown.copy': 'Markdown をコピー',
+  'post.markdown.copied': 'コピーしました',
+  'post.markdown.downloadedInstead': 'クリップボードを使えないため、ダウンロードしました',
+  'post.markdown.failed': 'Markdown を取得できませんでした',
+  'post.markdown.more': 'その他の Markdown 操作',
+  'post.markdown.download': '.md をダウンロード',
+  'post.markdown.openInEditor': '執筆室で開く',
+  'post.markdown.localEditors': 'ローカルエディタ',
   'post.draft': '下書き',
   'post.pinned': '固定済み',
   'post.noPostsFound': '投稿が見つかりません',
@@ -93,6 +126,11 @@ export const uiStrings: UIStrings = {
 
   // ── 友達 ─────────────────────────────────────────────────
   'friends.title': '友達',
+  'friends.all': 'すべて',
+  'friends.ungrouped': '未分類',
+  'friends.filterLabel': 'リンクをグループで絞り込む',
+  'friends.emptyGroupTitle': 'このグループにはまだサイトがありません',
+  'friends.emptyGroupDescription': 'ほかのグループのブログも見てみましょう。',
   'friends.applyTitle': '友達のリンクに適用',
   'friends.siteName': 'サイト名',
   'friends.siteUrl': 'サイトのURL',
@@ -134,11 +172,22 @@ export const uiStrings: UIStrings = {
   'diagram.zoomOut': '縮小',
   'diagram.resetZoom': 'リセット',
   'diagram.fitToScreen': '画面に合わせる',
+  'diagram.actualSize': '実際のサイズ',
   'diagram.download': '画像をダウンロード',
   'diagram.resize': '図のサイズを変更',
   'diagram.resizeHint': 'ドラッグでサイズ変更、ダブルクリックで元に戻す',
+  'diagram.renderError': '図を表示できませんでした',
+  'diagram.loadingSlow': '図の読み込みに時間がかかっています',
+  'diagram.errorHelp': 'ページを再読み込みするか、ツールバーから図のソースを表示・コピーできます。',
+  'diagram.errorHelpNoSource': 'ページを再読み込みしてお試しください。',
+  'diagram.reload': '再読み込み',
+  'diagram.gestureHint': 'ピンチ/ホイールで拡大縮小・ドラッグで移動・ダブルクリックで拡大',
 
   // ── Lightboxでの画像表示 ──────────────────────────────────────────
+  'image.preview': '画像プレビュー',
+  'image.loadError': '画像を読み込めませんでした',
+  'image.retry': '再試行',
+  'image.hintMobileGallery': '左右にスワイプで切替 · ピンチで拡大 · 下にスワイプで閉じる',
   'image.zoomIn': '拡大',
   'image.zoomOut': '縮小',
   'image.resetZoom': 'リセット',
@@ -148,8 +197,8 @@ export const uiStrings: UIStrings = {
   'image.prev': '前へ',
   'image.next': '次へ',
   'image.counter': '{current} / {total}',
-  'image.hintDesktop': 'ダブルクリックで拡大、スクロール/ピンチで大きさを変更',
-  'image.hintMobile': 'ダブルタップで拡大、ピンチで大きさを変更',
+  'image.hintDesktop': 'ダブルクリックで拡大 · スクロールでズーム · 余白をクリックして閉じる',
+  'image.hintMobile': 'ダブルタップ・ピンチで拡大 · 下にスワイプ・余白をタップして閉じる',
 
   // ── メディアコントロール ──────────────────────────────────────────
   'media.play': '再生',
@@ -319,15 +368,23 @@ export const uiStrings: UIStrings = {
   'series.latestPost': '最新',
   'series.viewAll': 'すべて表示',
   'series.postCount': '{count}件の投稿',
+  'series.position': '{total} 本中 {current} 本目',
   'series.noPosts': 'このシリーズには投稿がありません',
   'series.rss': 'RSSフィード',
   'series.chromeExtension': 'Chrome拡張機能',
   'series.docs': 'ドキュメント',
+  'series.issues': '号',
+  'series.latestIssue': '最新号',
+  'series.readIssue': 'この号を読む',
 
   // ── ホーム情報 ───────────────────────────────────────────────
   'homeInfo.articles': '記事',
   'homeInfo.categories': 'カテゴリー',
   'homeInfo.tags': 'タグ',
+  'homeInfo.greetingMorning': 'おはよう！',
+  'homeInfo.greetingAfternoon': 'こんにちは！',
+  'homeInfo.greetingEvening': 'こんばんは！',
+  'homeInfo.greetingNight': '夜更かしはほどほどに',
 
   // ── ドロワー ──────────────────────────────────────────────────
   'drawer.navMenu': 'ナビゲーションメニュー',

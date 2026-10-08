@@ -113,6 +113,14 @@ export interface FriendLink {
   desc: string;
   image: string;
   color?: string;
+  /** ID of a group defined in friends.groups. */
+  group?: string;
+}
+
+export interface FriendGroup {
+  id: string;
+  title: string;
+  description?: string;
 }
 
 export interface FriendsIntro {
@@ -125,6 +133,7 @@ export interface FriendsIntro {
 
 export interface FriendsConfig {
   intro: FriendsIntro;
+  groups?: FriendGroup[];
   data: FriendLink[];
 }
 
@@ -674,6 +683,11 @@ export interface I18nConfig {
   locales: LocaleConfig[];
 }
 
+/** Public writing room and its preview page. Disabled unless explicitly enabled. */
+export interface WritingRoomConfig {
+  enabled?: boolean;
+}
+
 // =============================================================================
 // Root Configuration Type
 // =============================================================================
@@ -692,6 +706,12 @@ export interface SiteYamlConfig {
   motion?: MotionConfig;
   /** Optional dynamic moments archive backed by koharu-suite. */
   moments?: MomentsConfig;
+  /** Optional public Markdown writing room. */
+  editor?: WritingRoomConfig;
+  /** Post marks dictionary (落款); validated by normalizeColophonConfig. */
+  colophon?: unknown;
+  /** Markdown copy / download / open-in-writing-room actions on post pages. */
+  postActions?: unknown;
   navigation?: RouterItem[];
   comment?: CommentConfig;
   analytics?: AnalyticsConfig;

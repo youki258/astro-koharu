@@ -9,14 +9,20 @@
 
 import yamlConfig from '../../../config/site.yaml';
 import { DEFAULT_TIMEZONE, isValidTimezone } from '../timezone';
+import { normalizeColophonConfig } from './colophon';
 import { normalizeContentConfig } from './content';
+import { normalizeEditorConfig } from './editor';
 import { enabledFeaturedSeriesSlugs, normalizeFeaturedSeries } from './featured-series';
+import { normalizeFriendGroups } from './friends';
 import { normalizeMotionConfig } from './motion';
+import { normalizePostActionsConfig } from './post-actions';
 import { RESERVED_ROUTES } from './reserved-routes';
 import type { I18nConfig, ResolvedContentConfig, ResolvedMotionConfig, ResolvedSiteConfig } from './types';
 
 /** Category name → URL slug map, e.g. `{ '随笔': 'life' }`. */
 export const categoryMap: Record<string, string> = yamlConfig.categoryMap ?? {};
+
+export const friendGroups = normalizeFriendGroups(yamlConfig.friends?.groups);
 
 /** Validated featured series, always an array with lowercase slugs. */
 export const featuredSeriesList = normalizeFeaturedSeries(yamlConfig.featuredSeries, {
@@ -40,6 +46,14 @@ export const contentConfig: ResolvedContentConfig = normalizeContentConfig(yamlC
 
 /** Default motion level and sakura effect switches with field-level defaults applied. */
 export const motionConfig: ResolvedMotionConfig = normalizeMotionConfig(yamlConfig.motion);
+
+/** Writing room pages are only available when explicitly enabled. */
+export const editorConfig = normalizeEditorConfig(yamlConfig.editor);
+
+/** Colophon mark dictionary in the default locale; localize via `getColophonConfig()` in `@lib/content/post-colophon`. */
+export const colophonConfig = normalizeColophonConfig(yamlConfig.colophon);
+
+export const postActionsConfig = normalizePostActionsConfig(yamlConfig.postActions);
 
 /**
  * Site timezone in IANA format.

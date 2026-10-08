@@ -20,8 +20,8 @@ const MAX_LEAN = 24;
 /** The current row may drift within this band of its scroll area before it is brought back to FOLLOW_AT. */
 const COMFORT_BAND = [0.15, 0.75] as const;
 const FOLLOW_AT = 0.35;
-/** The wash starts this far left of the ribbon, so the ribbon runs inside it. */
-const WASH_INSET = 7;
+/** The wash starts this far right of the ribbon, so the ribbon and petal stay outside it. */
+const WASH_GAP = 5;
 
 interface TocGlideParts {
   wash: HTMLElement;
@@ -83,10 +83,10 @@ function createTocGlide(nav: HTMLElement, parts: TocGlideParts): TocGlideControl
     knots = [];
     let floor = Number.NEGATIVE_INFINITY;
     for (const element of nav.querySelectorAll<HTMLElement>('[data-toc-row]')) {
-      if (element.closest('[inert]')) continue;
       let top = offsetIn(element).y;
       let bottom = top + element.offsetHeight;
-      // A section that is still unfolding clips its rows; the ribbon only reaches what shows.
+      // `inert` disables interaction as soon as folding starts, while the rows still slide shut.
+      // Use their clipped geometry during both folding and unfolding so the ribbon stays attached.
       for (
         let clip = element.parentElement?.closest<HTMLElement>('.silk-heading-children-inner');
         clip;
@@ -149,7 +149,7 @@ function createTocGlide(nav: HTMLElement, parts: TocGlideParts): TocGlideControl
     const bottom = Math.max(washSpan.right, top);
     const lane = ribbon.pointAt(ribbon.lengthAt((top + bottom) / 2)).x;
     parts.wash.style.translate = `0 ${top}px`;
-    parts.wash.style.left = `${Math.max(lane - WASH_INSET, 0)}px`;
+    parts.wash.style.left = `${lane + WASH_GAP}px`;
     parts.wash.style.height = `${bottom - top}px`;
     // Racing through short sections, the wash trails the petal for a few frames; the petal then rides
     // the wash's edge, so it never shows outside the current row.

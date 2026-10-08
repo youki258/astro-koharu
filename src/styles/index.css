@@ -1,3 +1,5 @@
+@layer motion-defaults;
+
 @import "./theme/shadcn.css";
 @import "./theme/index.css";
 @import "./theme/theme-transition.css";
@@ -22,8 +24,15 @@
 @import "./components/header.css";
 @import "./components/segmented.css";
 @import "./components/drawer.css";
-@import "./components/category.css";
+@import "./components/sider.css";
+@import "./components/index-pages.css";
+@import "./components/series-issues.css";
+@import "./components/index-archives.css";
+@import "./components/category-toc.css";
+@import "./components/tag-cloud.css";
+@import "./components/bangumi.css";
 @import "./components/post.css";
+@import "./components/colophon.css";
 @import "./components/toc.css";
 @import "./components/pagefind.css";
 @import "./components/embed.css";

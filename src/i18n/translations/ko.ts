@@ -5,6 +5,29 @@
  */
 
 export const uiStrings = {
+  // Index pages
+  'index.posts': '개 게시물',
+  'index.years': '년',
+  'index.categories': '개 카테고리',
+  'index.tags': '개 태그',
+  'index.mostUsed': '가장 많이 사용한 태그',
+  'category.filter': '하위 카테고리',
+  'colophon.seal': '콜로폰',
+  'colophon.filter': '콜로폰 표시로 필터',
+  'tag.filter': '태그 필터',
+  'tag.filterPlaceholder': '태그 이름 입력',
+  'tag.noMatches': '일치하는 태그가 없습니다',
+  'tag.singleTags': '한 번만 사용한 태그 {count}개 더 보기',
+  'archives.jumpToYear': '{year}년으로 이동',
+  'archives.legendFew': '적음',
+  'archives.legendMany': '많음',
+  'archives.calendar': '게시물 달력',
+  'archives.monthLabel': '{year}년 {month}월 · 게시물 {count}개',
+  'friends.countUnit': '명의 친구',
+  'friends.emptyTitle': '아직 친구 링크가 없습니다',
+  'friends.emptyDesc': '사이트를 소개하고 첫 번째 친구가 되어 주세요.',
+  'moments.messageActions': '메시지 작업',
+
   // ── Navigation ──────────────────────────────────────────────
   'nav.home': '홈',
   'nav.posts': '게시물',
@@ -20,6 +43,8 @@ export const uiStrings = {
   // ── Common ──────────────────────────────────────────────────
   'common.search': '검색',
   'common.close': '닫기',
+  'viewer.loadError': '뷰어를 불러오지 못했습니다. 페이지를 새로고침해 다시 시도해 주세요.',
+  'search.loadError': '검색을 불러오지 못했습니다. 페이지를 새로고침해 다시 시도해 주세요.',
   'common.copy': '복사',
   'common.copied': '복사 완료',
   'common.copyFailed': '자동 복사 실패, 직접 복사해 주세요',
@@ -53,6 +78,14 @@ export const uiStrings = {
   'post.seriesPrev': '이전 편',
   'post.seriesNext': '다음 편',
   'post.fallbackNotice': '이 게시물은 아직 {lang} 번역이 없으므로 원문으로 표시돼요',
+  'post.markdown.copy': 'Markdown 복사',
+  'post.markdown.copied': '복사됨',
+  'post.markdown.downloadedInstead': '클립보드를 쓸 수 없어 대신 다운로드했어요',
+  'post.markdown.failed': 'Markdown을 불러오지 못했어요',
+  'post.markdown.more': 'Markdown 작업 더 보기',
+  'post.markdown.download': '.md 다운로드',
+  'post.markdown.openInEditor': '글쓰기 공간에서 열기',
+  'post.markdown.localEditors': '로컬 편집기',
   'post.draft': '초안',
   'post.pinned': '고정됨',
   'post.noPostsFound': '게시물이 없어요',
@@ -91,6 +124,11 @@ export const uiStrings = {
 
   // ── Friends ─────────────────────────────────────────────────
   'friends.title': '친구 링크',
+  'friends.all': '전체',
+  'friends.ungrouped': '미분류',
+  'friends.filterLabel': '그룹별 친구 링크 필터',
+  'friends.emptyGroupTitle': '이 그룹에는 아직 사이트가 없어요',
+  'friends.emptyGroupDescription': '다른 그룹의 블로그도 둘러보세요.',
   'friends.applyTitle': '링크 교환 신청',
   'friends.siteName': '사이트 이름',
   'friends.siteUrl': '사이트 주소',
@@ -132,11 +170,22 @@ export const uiStrings = {
   'diagram.zoomOut': '축소',
   'diagram.resetZoom': '확대/축소 초기화',
   'diagram.fitToScreen': '화면에 맞춤',
+  'diagram.actualSize': '실제 크기',
   'diagram.download': '이미지 다운로드',
   'diagram.resize': '다이어그램 크기 조절',
   'diagram.resizeHint': '드래그하여 크기 조절, 더블클릭하여 원래대로',
+  'diagram.renderError': '다이어그램을 표시할 수 없습니다',
+  'diagram.loadingSlow': '다이어그램을 불러오는 데 시간이 걸리고 있습니다',
+  'diagram.errorHelp': '페이지를 새로고침하거나 도구 모음에서 다이어그램 소스를 보고 복사할 수 있습니다.',
+  'diagram.errorHelpNoSource': '페이지를 새로고침하여 다시 시도해 주세요.',
+  'diagram.reload': '새로고침',
+  'diagram.gestureHint': '핀치/휠로 확대·축소 · 드래그로 이동 · 더블클릭으로 확대',
 
   // ── Image Lightbox ──────────────────────────────────────────
+  'image.preview': '이미지 미리보기',
+  'image.loadError': '이미지를 불러오지 못했습니다',
+  'image.retry': '다시 시도',
+  'image.hintMobileGallery': '좌우로 밀어 넘기기 · 두 손가락으로 확대 · 아래로 밀어 닫기',
   'image.zoomIn': '확대',
   'image.zoomOut': '축소',
   'image.resetZoom': '초기화',
@@ -146,8 +195,8 @@ export const uiStrings = {
   'image.prev': '이전 이미지',
   'image.next': '다음 이미지',
   'image.counter': '{current} / {total}',
-  'image.hintDesktop': '두 번 클릭하여 확대 · 휠/두 손가락으로 확대/축소',
-  'image.hintMobile': '두 번 탭하여 확대 · 두 손가락으로 확대/축소',
+  'image.hintDesktop': '두 번 클릭하여 확대 · 스크롤로 확대/축소 · 빈 곳을 클릭하여 닫기',
+  'image.hintMobile': '두 번 탭하거나 두 손가락으로 확대 · 아래로 밀거나 빈 곳을 탭하여 닫기',
 
   // ── Media Controls ──────────────────────────────────────────
   'media.play': '재생',
@@ -317,15 +366,23 @@ export const uiStrings = {
   'series.latestPost': '최신 게시물',
   'series.viewAll': '모두 보기',
   'series.postCount': '{count}개',
+  'series.position': '{total}편 중 {current}번째',
   'series.noPosts': '등록된 시리즈 게시물이 없어요',
   'series.rss': 'RSS 구독',
   'series.chromeExtension': 'Chrome 확장 프로그램',
   'series.docs': '문서',
+  'series.issues': '호',
+  'series.latestIssue': '최신호',
+  'series.readIssue': '이번 호 읽기',
 
   // ── Home Info ───────────────────────────────────────────────
   'homeInfo.articles': '게시물',
   'homeInfo.categories': '카테고리',
   'homeInfo.tags': '태그',
+  'homeInfo.greetingMorning': '좋은 아침이에요!',
+  'homeInfo.greetingAfternoon': '좋은 오후예요!',
+  'homeInfo.greetingEvening': '좋은 저녁이에요!',
+  'homeInfo.greetingNight': '늦었어요, 푹 쉬세요',
 
   // ── Drawer ──────────────────────────────────────────────────
   'drawer.navMenu': '내비게이션 메뉴',

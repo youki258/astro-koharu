@@ -5,9 +5,10 @@
  */
 
 import { ErrorBoundary, ErrorFallback } from '@components/common';
-import { useEffect, useState } from 'react';
+import { lazy, type RefObject, Suspense, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import TweetEmbed from './TweetEmbed';
+
+const TweetEmbed = lazy(() => import('./TweetEmbed'));
 
 interface TweetPlaceholder {
   element: Element;
@@ -15,12 +16,12 @@ interface TweetPlaceholder {
   sourceUrl: string;
 }
 
-export function EmbedHydrator() {
+export function EmbedHydrator({ containerRef }: { containerRef?: RefObject<HTMLElement | null> } = {}) {
   const [tweetPlaceholders, setTweetPlaceholders] = useState<TweetPlaceholder[]>([]);
 
   useEffect(() => {
     // Find all tweet embed placeholders
-    const tweetEmbeds = document.querySelectorAll('[data-tweet-embed]');
+    const tweetEmbeds = (containerRef?.current ?? document).querySelectorAll('[data-tweet-embed]');
     const placeholders: TweetPlaceholder[] = [];
 
     tweetEmbeds.forEach((element) => {
@@ -38,7 +39,7 @@ export function EmbedHydrator() {
     });
 
     setTweetPlaceholders(placeholders);
-  }, []);
+  }, [containerRef]);
 
   // Render tweets using portals instead of creating new roots
   return (
@@ -46,9 +47,24 @@ export function EmbedHydrator() {
       {tweetPlaceholders.map(({ element, sourceUrl, tweetId }) =>
         createPortal(
           <ErrorBoundary
-            fallbackRender={(props) => <ErrorFallback {...props} title="TweetEmbed Error" sourceUrl={sourceUrl} />}
+            fallbackRender={(props) => (
+              <ErrorFallback
+                {...props}
+                resetErrorBoundary={() => window.location.reload()}
+                title="TweetEmbed Error"
+                sourceUrl={sourceUrl}
+              />
+            )}
           >
-            <TweetEmbed sourceUrl={sourceUrl} tweetId={tweetId} />
+            <Suspense
+              fallback={
+                <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
+                  {sourceUrl}
+                </a>
+              }
+            >
+              <TweetEmbed sourceUrl={sourceUrl} tweetId={tweetId} />
+            </Suspense>
           </ErrorBoundary>,
           element,
         ),
