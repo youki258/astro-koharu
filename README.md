@@ -1,40 +1,26 @@
-# astro-koharu
+# youkiの博客
 
 **Language:** **中文** | [English](./docs/README.en.md) | [日本語](./docs/README.ja.md)
 
-![](https://r2.cosine.ren/i/2026/01/94383107ba4586f773938ed4dae34ff1.webp)
+![](public/img/banner/banner-1920.webp)
 
-一个萌系 / 二次元 / 粉蓝配色的博客主题，适合 ACG、前端、手账向个人站，性能优异。
+基于萌系博客主题 [astro-koharu](https://github.com/cosZone/astro-koharu) 搭建的个人博客，主题开发者的示例站可查看 https://blog.cosine.ren/ ，喜欢主题的话欢迎去上游 star ～
 
-> 命名灵感来源于 “小春日和”（こはるびより）指的是晚秋到初冬这段时期，持续的一段似春天般温暖的晴天。也就是中文中的"小阳春"。
+> 记录技术与生活 · https://blog.youki.fun
 
-博客整体设计灵感来自 Hexo 的 [Shoka](https://shoka.lostyu.me/computer-science/note/theme-shoka-doc/) 主题，用更现代的技术栈打造属于你的个人博客。
+## 我的定制
 
-本仓库已清理为示例仓库，主题开发者的博客可查看 https://blog.cosine.ren/ 喜欢的话欢迎 star ～
-
-持续迭代中
-
-- 基于 **Astro**，静态输出，加载轻快
-- 萌系 / 二次元 / 粉蓝配色，适合 ACG、前端、手账向个人站
-- 支持多分类、多标签，但不会强迫你用复杂信息架构
-- 尽可能的减少性能开销
-- 使用 pagefind 实现无后端的全站搜索
-- LQIP（低质量图片占位符），图片加载前显示渐变色占位
-
-![演示图1](https://r2.cosine.ren/i/2025/12/417b098dffce2ced9c0ff6009e5213df.gif)
-
-[性能优异](https://pagespeed.web.dev/analysis/https-blog-cosine-ren/w6qzrwbp9b?hl=zh-cn&form_factor=desktop)：目标是 PC 的全绿，但是随着功能迭代不可避免的需要反复检查！
-
-![性能优化](https://r2.cosine.ren/i/2025/12/e93f40c340a626c4ab72212a84cf6d5d.webp)
-
-可在此进行博客的[反馈](https://cos.featurebase.app/)以及查看 Roadmap，当然更欢迎在 issue 区域提 issue，不过这毕竟是个人项目，喜欢的也欢迎 fork 出去改。
-
-![](https://r2.cosine.ren/i/2026/01/f1c239b4adf7771f10b954c389d87a74.webp)
-![](https://r2.cosine.ren/i/2026/01/c962f82503abf68eb1f21b835873f241.webp)
+- **自有视觉素材**：替换首页横幅（`public/img/banner/`）与 67 张文章封面池（`public/img/cover-mine/`），映射清单见 [docs/asset-map.md](./docs/asset-map.md)
+- **自部署 Waline 评论**（`comments.youki.fun`），Giscus 作为备选
+- **内容迁移**：从 fuwari 博客迁移 51 篇文章（笔记 + 生活），图片统一转 WebP
+- **CI 自动部署**：Docker 镜像构建 + SSH 部署 + 健康检查 + 自动回滚
+- 从 **Hexo / fuwari** 一路迁移而来，设计灵感来自 Hexo 的 [Shoka](https://shoka.lostyu.me/computer-science/note/theme-shoka-doc/) 主题
 
 ## 部署
 
 默认输出纯静态站，可直接部署到 **Vercel**、**Netlify**、nginx 等平台。只有启用可选的“碎碎念”动态归档时，才需要 Astro Node standalone 部署；两种模式的配置见[部署架构](./docs/overview/11-deployment-adapters.md)。
+
+> 本仓库的实际部署走 Docker 镜像 + SSH 自动部署（含健康检查与回滚），流程见 `docs/deploy.md`。
 
 ### 一键部署
 
