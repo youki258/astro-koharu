@@ -6,6 +6,7 @@ date: 2026-08-02T00:00:00.000Z
 updated: 2026-08-02T00:00:00.000Z
 tags: [Codex, AI]
 categories: [[笔记, 工具]]
+colophon: [ai-cowrite]
 ---
 
 在我最开始使用 Codex 等 ai 工具时，最先研究的是 Prompt。

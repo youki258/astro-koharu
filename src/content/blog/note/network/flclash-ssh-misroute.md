@@ -6,6 +6,7 @@ date: 2026-08-05T00:00:00.000Z
 updated: 2026-08-05T00:00:00.000Z
 tags: [FlClash, SSH, TUN, Fake-IP, 网络排查]
 categories: [[笔记, 网络与架构]]
+colophon: [ai-cowrite]
 ---
 
 最近把一个旧服务器的 CPA/CPAMP 服务完整迁移到了新的服务器。Docker Compose、Caddy、HTTPS、历史数据和插件都已经验证正常，API 也可以正常调用。
