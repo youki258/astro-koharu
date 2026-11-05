@@ -136,7 +136,7 @@ export const uiStrings = {
   'friends.siteDesc': '站点简介',
   'friends.avatarUrl': '头像链接',
   'friends.themeColor': '主题色',
-  'friends.submit': '提交',
+  'friends.submit': '提交申请',
   'friends.copySuccess': '已复制到剪贴板',
   'friends.copyFail': '复制失败，请手动复制',
   'friends.generateFormat': '生成申请格式',
@@ -149,7 +149,11 @@ export const uiStrings = {
   'friends.previewTitle': '配置预览',
   'friends.copyConfig': '复制配置',
   'friends.copiedConfig': '已复制!',
-  'friends.hint': '提示: 复制上方代码并在下方评论区粘贴发送即可，我会收到的～',
+  'friends.hint': '提示: 直接提交表单最快；也可以复制上方配置在评论区留言。',
+  'friends.submitting': '提交中…',
+  'friends.submitOk': '已提交！审核通过后会直接出现在这里',
+  'friends.submitFail': '提交失败',
+  'friends.submitMissing': '站点名称、昵称、网址三项必填',
 
   // ── Code Block ──────────────────────────────────────────────
   'code.copy': '复制代码',

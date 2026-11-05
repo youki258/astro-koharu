@@ -137,7 +137,7 @@ export const uiStrings: UIStrings = {
   'friends.siteDesc': 'Description',
   'friends.avatarUrl': 'Avatar URL',
   'friends.themeColor': 'Theme Color',
-  'friends.submit': 'Submit',
+  'friends.submit': 'Submit request',
   'friends.copySuccess': 'Copied to clipboard',
   'friends.copyFail': 'Copy failed, please copy manually',
   'friends.generateFormat': 'Generate Format',
@@ -150,7 +150,11 @@ export const uiStrings: UIStrings = {
   'friends.previewTitle': 'Config Preview',
   'friends.copyConfig': 'Copy Config',
   'friends.copiedConfig': 'Copied!',
-  'friends.hint': 'Tip: Copy the code above and paste it in the comment section below.',
+  'friends.hint': 'Tip: Submit the form directly — it reaches me instantly. Copying the config also works.',
+  'friends.submitting': 'Submitting…',
+  'friends.submitOk': 'Submitted! It will appear here once approved.',
+  'friends.submitFail': 'Submission failed',
+  'friends.submitMissing': 'Site name, owner and URL are required',
 
   // ── Code Block ──────────────────────────────────────────────
   'code.copy': 'Copy code',

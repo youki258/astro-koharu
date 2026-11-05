@@ -34,6 +34,9 @@ export default function FriendRequestForm({ locale }: Props) {
   });
 
   const { copied, copy } = useClipboard({ timeout: 2000 });
+  const [status, setStatus] = useState<'idle' | 'sending' | 'ok' | 'error'>('idle');
+  const [feedback, setFeedback] = useState('');
+  const [hp, setHp] = useState('');
 
   const generateText = useCallback(() => {
     return `site: ${formData.site || t('friends.sitePlaceholder')}
@@ -60,6 +63,35 @@ color: "${formData.color || '#ffc0cb'}"`;
     [], // 空依赖 - 使用函数式更新
   );
 
+  const handleSubmit = useCallback(
+    async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      if (status === 'sending') return;
+      if (!formData.site.trim() || !formData.owner.trim() || !formData.url.trim()) {
+        setStatus('error');
+        setFeedback(t('friends.submitMissing'));
+        return;
+      }
+      setStatus('sending');
+      setFeedback('');
+      try {
+        const resp = await fetch('/api/friend-request', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...formData, hp }),
+        });
+        const data = (await resp.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+        if (!resp.ok || !data.ok) throw new Error(data.error || `HTTP ${resp.status}`);
+        setStatus('ok');
+        setFeedback(t('friends.submitOk'));
+      } catch (err) {
+        setStatus('error');
+        setFeedback(`${t('friends.submitFail')}：${(err as Error).message}`);
+      }
+    },
+    [formData, hp, status, t],
+  );
+
   return (
     <div className="mb-4 w-full">
       <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-sm md:p-3">
@@ -78,7 +110,7 @@ color: "${formData.color || '#ffc0cb'}"`;
               <p className="font-medium text-muted-foreground text-sm">{friendsIntro.applyDesc}</p>
             </div>
 
-            <div className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="grid grid-cols-2 gap-4">
                 <div className="group relative">
                   <label htmlFor="friend-site" className={LABEL_CLASS}>
@@ -180,7 +212,39 @@ color: "${formData.color || '#ffc0cb'}"`;
                   </div>
                 </div>
               </div>
-            </div>
+
+              {/* 蜜罐字段：真人看不见，机器人会填 */}
+              <input
+                type="text"
+                name="hp"
+                tabIndex={-1}
+                autoComplete="off"
+                value={hp}
+                onChange={(e) => setHp(e.target.value)}
+                className="pointer-events-none absolute -left-[9999px] h-0 w-0 opacity-0"
+                aria-hidden="true"
+              />
+
+              <div className="flex flex-col gap-2 pt-2">
+                <button
+                  type="submit"
+                  disabled={status === 'sending'}
+                  className="group relative w-full rounded-xl border-2 border-foreground bg-primary/90 px-4 py-3 font-black text-base text-primary-foreground transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {status === 'sending' ? t('friends.submitting') : t('friends.submit')}
+                </button>
+                {feedback ? (
+                  <p
+                    className={cn(
+                      'text-center font-bold text-xs',
+                      status === 'ok' ? 'text-green-600' : 'text-red-500',
+                    )}
+                  >
+                    {feedback}
+                  </p>
+                ) : null}
+              </div>
+            </form>
           </div>
 
           {/* Right Side: Preview / Code */}
