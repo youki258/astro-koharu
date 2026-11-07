@@ -707,6 +707,7 @@ comment:
     serverURL: https://comments.youki.fun
     lang: zh-CN
     dark: html.dark
+    reaction: true # 文章点赞：评论框下方一排 emoji 反应（评论本身的 ♥ 点赞是客户端自带的）
   # giscus: # 备用方案，改回 provider: giscus 即可启用（App 已安装）
   #   repo: youki258/astro-koharu
   #   repoId: R_kgDOUSD6gw
