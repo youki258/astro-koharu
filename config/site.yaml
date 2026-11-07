@@ -424,7 +424,9 @@ motion:
 # 碎碎念动态归档 - 默认关闭；启用时还需配置 KOHARU_SUITE_URL 和 dynamic Docker target
 # =============================================================================
 moments:
-  enabled: true # Phase C 部署 koharu-suite 前碎碎念页面会 503，其余页面不受影响
+  # 2026-11-07: 切 static 部署（nginx，镜像 1.5GB → ~160MB）。moments 是 prerender:false 的
+  # SSR 路由，static 构建里不能存在，因此关闭；要恢复就把部署改回 dynamic target 并置 true。
+  enabled: false
   path: moments
   title: 碎碎念
   description: 记录频道中的日常消息
