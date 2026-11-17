@@ -426,7 +426,7 @@ motion:
 moments:
   # 2026-11-07: 切 static 部署（nginx，镜像 1.5GB → ~160MB）。moments 是 prerender:false 的
   # SSR 路由，static 构建里不能存在，因此关闭；要恢复就把部署改回 dynamic target 并置 true。
-  enabled: false
+  enabled: true
   path: moments
   title: 碎碎念
   description: 记录频道中的日常消息
