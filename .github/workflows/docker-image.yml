@@ -32,13 +32,16 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push (static target)
+      - name: Build and push (dynamic target)
         uses: docker/build-push-action@v6
         with:
           context: .
           file: docker/Dockerfile
-          # static = nginx + dist，镜像约 160MB；dynamic(Node SSR) 要装全套运行时依赖，1.5GB
-          target: static
+          # dynamic = Node SSR，moments(碎碎念) 是 prerender:false 路由，必须走这个 target。
+          # 镜像约 2.5GB（运行时依赖全装），构建期还需要 KOHARU_SUITE_URL。
+          target: dynamic
+          build-args: |
+            KOHARU_SUITE_URL=https://suite.youki.fun
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
