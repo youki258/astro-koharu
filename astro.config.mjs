@@ -9,7 +9,6 @@ import yaml from '@rollup/plugin-yaml';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, memoryCache } from 'astro/config';
 import icon from 'astro-icon';
-import mermaid from 'astro-mermaid';
 import pagefind from 'astro-pagefind';
 import robotsTxt from 'astro-robots-txt';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -29,6 +28,7 @@ import { enabledFeaturedSeriesSlugs, normalizeFeaturedSeries } from './src/lib/c
 import { BUNDLED_ICON_SETS } from './src/lib/config/icon-sets.ts';
 import { normalizeMomentsConfig } from './src/lib/config/moments.ts';
 import { RESERVED_ROUTES } from './src/lib/config/reserved-routes.ts';
+import { lazyMermaid } from './src/lib/markdown/lazy-mermaid.ts';
 import { mermaidThemeCSS } from './src/lib/markdown/mermaid-theme.ts';
 import { rehypeEncryptedBlock } from './src/lib/markdown/rehype-encrypted-block.ts';
 import { rehypeEncryptedPost } from './src/lib/markdown/rehype-encrypted-post.ts';
@@ -36,6 +36,7 @@ import { rehypeImagePlaceholder } from './src/lib/markdown/rehype-image-placehol
 import { rehypeShokaAttrs } from './src/lib/markdown/rehype-shoka-attrs.ts';
 import { remarkEncryptedDirective } from './src/lib/markdown/remark-encrypted-directive.ts';
 import { remarkLinkEmbed } from './src/lib/markdown/remark-link-embed.ts';
+import { remarkLiteralDirectives } from './src/lib/markdown/remark-literal-directives.ts';
 import { remarkIns, remarkMark } from './src/lib/markdown/remark-shoka-effects.ts';
 import { remarkShokaPreprocess } from './src/lib/markdown/remark-shoka-preprocess.ts';
 import { remarkShokaRuby } from './src/lib/markdown/remark-shoka-ruby.ts';
@@ -179,7 +180,7 @@ if (contentConfig.enableShokaEffects) {
 // here for the main Astro pipeline (when remarkShokaPreprocess skips re-parse),
 // and inside remarkShokaPreprocess's re-parse pipeline (when it does re-parse).
 if (contentConfig.enableEncryptedBlock) {
-  remarkPlugins.push(remarkDirective, remarkEncryptedDirective);
+  remarkPlugins.push(remarkDirective, remarkLiteralDirectives, remarkEncryptedDirective);
 }
 // Link embed is always on (existing feature)
 remarkPlugins.push([
@@ -243,13 +244,22 @@ export default defineConfig({
   },
   integrations: [
     ...(editorConfig.enabled ? [editorIntegration()] : []),
+    {
+      name: 'content-hydration',
+      hooks: {
+        'astro:config:setup': ({ addClientDirective }) => {
+          addClientDirective({ name: 'content', entrypoint: path.resolve('src/lib/markdown/client-content.ts') });
+          addClientDirective({ name: 'panel', entrypoint: path.resolve('src/lib/client-panel.ts') });
+        },
+      },
+    },
     react(),
     sitemap(),
     icon({
       include: Object.fromEntries(BUNDLED_ICON_SETS.map((set) => [set, ['*']])),
     }),
     pagefind(),
-    mermaid({
+    lazyMermaid({
       autoTheme: true,
       mermaidConfig: { themeCSS: mermaidThemeCSS },
     }),
@@ -266,8 +276,33 @@ export default defineConfig({
     enabled: true,
   },
   vite: {
+    environments: {
+      client: {
+        build: {
+          rolldownOptions: {
+            output: {
+              codeSplitting: {
+                // Shared React imports should not add separate network round trips to island hydration.
+                groups: [
+                  { name: 'react-runtime', test: /node_modules[/]\b(?:react|react-dom|scheduler)[/]/ },
+                  {
+                    name: 'motion-runtime',
+                    test: /node_modules[/](?:motion|framer-motion|motion-dom|motion-utils)[/]/,
+                    minShareCount: 2,
+                    entriesAware: true,
+                    entriesAwareMergeThreshold: 8 * 1024,
+                  },
+                ],
+              },
+            },
+          },
+        },
+      },
+    },
     worker: { format: 'es' },
     build: {
+      // Inline small style sheets without changing caching for images or larger assets.
+      assetsInlineLimit: (filePath, content) => (filePath.endsWith('.css') ? content.length < 8192 : undefined),
       // Enable sourcemap for Sonda bundle analysis
       sourcemap: isAnalyze,
       // Astro builds for "esnext", which leaves the CSS minifier (lightningcss) without browser
